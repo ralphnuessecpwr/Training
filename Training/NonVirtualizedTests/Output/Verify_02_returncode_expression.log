@@ -1,0 +1,63 @@
+10:01:07.137 INFO      TOPAZ            ***************************************
+10:01:07.138 INFO      TOPAZ            ** Execution from Topaz with options **
+10:01:07.138 INFO      TOPAZ            ***************************************
+10:01:07.138 INFO      TOPAZ            Using repository: true
+10:01:07.138 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+10:01:07.138 INFO      TOPAZ            ***************************************
+10:01:07.138 INFO      Engine           Test Scenario execution started
+10:01:07.138 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+10:01:07.138 INFO      Engine           Setting variables from context and context data extensions
+10:01:07.139 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+10:01:07.139 INFO      Engine             id: environmentType    value: BATCH
+10:01:07.139 INFO      Engine             id: userId             value: HDDRXM0
+10:01:07.139 INFO      Engine             id: accountingInfo     value: 
+10:01:07.139 INFO      Variable         Interpreting Variable id:userid
+10:01:07.139 INFO      Variable         Interpreting Variable id:datasetQualifier
+10:01:07.140 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+10:01:07.140 INFO      Variable         Interpreting Variable id:empInDatasetName
+10:01:07.140 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+10:01:07.140 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+10:01:07.140 INFO      Job              Interpreting JOB: Prepare Input Dataset
+10:01:07.140 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:01:07.140 INFO      CWCC Batch       Sending Job execution request to Host 
+10:01:07.715 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0190917) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0190917
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:01:07.716 INFO      Job              Successfully executed job: Prepare Input Dataset
+10:01:07.716 INFO      Job              Interpreting JOB: Run Test
+10:01:07.716 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:01:07.716 INFO      CWCC Batch       Sending Job execution request to Host 
+10:01:08.402 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0190918) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0190918
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:01:08.402 INFO      Job              Successfully executed job: Run Test
+10:01:08.402 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+10:01:08.408 INFO      Verify           Interpreting Verify component name:Verify Return Code
+10:01:08.409 INFO      Verify           Using verify expression:returncode == 0008
+10:01:08.420 INFO      Verify           The Verify expression was evaluated to false
+10:01:08.421 ERROR     Engine           Execution was stopped by component
+10:01:08.421 INFO      Engine           Test Scenario execution ended

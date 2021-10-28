@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExecutionContext xmlns="http://www.xact.dk/xatester/v/1" environment="5b508b8a787be73b59238d38" logLevel="INFO" remote="false" useSimulations="true" uploadResult="false" timeout="300" readTimeout="30" debuggerType="NONE" jobInfoInterval="3">
+  <ExtensionData>
+    <Parameter key="date">
+      <Value>2019/12/31</Value>
+    </Parameter>
+    <Parameter key="fa_output">
+      <Value>HDDRXM0.TRAIN.LBP.CWXTDATA</Value>
+    </Parameter>
+    <Parameter key="test_input">
+      <Value>HDDRXM0.TRAIN.LBP.CWXTDATA</Value>
+    </Parameter>
+    <Parameter key="fa_master">
+      <Value>HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER</Value>
+    </Parameter>
+    <Parameter key="test_expected">
+      <Value>HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG</Value>
+    </Parameter>
+    <Parameter key="userid">
+      <Value>HDDRXM0</Value>
+    </Parameter>
+    <Parameter key="test_output">
+      <Value>HDDRXM0.TRAIN.LBP.CWXTRPT</Value>
+    </Parameter>
+  </ExtensionData>
+  <XaUnit path="Combined.scenario" />
+</ExecutionContext>

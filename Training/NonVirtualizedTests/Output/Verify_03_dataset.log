@@ -1,0 +1,50 @@
+16:43:49.417 INFO      TOPAZ            ***************************************
+16:43:49.417 INFO      TOPAZ            ** Execution from Topaz with options **
+16:43:49.417 INFO      TOPAZ            ***************************************
+16:43:49.417 INFO      TOPAZ            Using repository: true
+16:43:49.417 INFO      TOPAZ            Repository URL: http://localhost:48226/totaltestapi/
+16:43:49.417 INFO      TOPAZ            ***************************************
+16:43:49.417 INFO      Engine           Test Scenario execution started
+16:43:49.417 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5cee98c2d3142c1f90a4976d
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.compuware.com
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+16:43:49.418 INFO      Engine           Setting variables from context and context data extensions
+16:43:49.418 INFO      Engine             id: environmentId      value: 5cee98c2d3142c1f90a4976d
+16:43:49.418 INFO      Engine             id: environmentType    value: BATCH
+16:43:49.418 INFO      Engine             id: userId             value: HDDRXM0
+16:43:49.418 INFO      Engine             id: accountingInfo     value: 
+16:43:49.419 INFO      Variable         Interpreting Variable id:userid
+16:43:49.419 INFO      Variable         Interpreting Variable id:datasetQualifier
+16:43:49.419 INFO      Variable         Interpreting Variable id:empInDatasetName
+16:43:49.419 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+16:43:49.419 INFO      Job              Interpreting JOB: Run Test
+16:43:49.419 INFO      Job              Variable substitution found in Job JCL, now substituted
+16:43:49.420 INFO      CWCC VT          Sending Job execution request to Host 
+16:43:50.018 INFO      CWCC VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0194452) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0194452
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+16:43:50.019 INFO      Job              Successfully executed job: Run Test
+16:43:50.019 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+16:43:50.025 INFO      RemoteFile       Interpreting RemoteFile with path: ${outDatasetNameActual}
+16:43:50.025 INFO      RemoteFile         Variable substitution found in path
+16:43:50.025 INFO      RemoteFile         Path is now:HDDRXM0.TRAIN.LBP.CWXTRPT
+16:43:51.003 INFO      Verify           Interpreting Verify component name:Verify 'INVALID EMPLOYEE TYPE'
+16:43:51.003 INFO      Verify           Using verify expression:rptFile.indexOf('INVALID EMPLOYEE TYPE') > -1
+16:43:51.032 INFO      Engine           Test Scenario execution ended

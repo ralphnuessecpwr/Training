@@ -1,0 +1,223 @@
+12:04:13.070 INFO      TOPAZ            ***************************************
+12:04:13.070 INFO      TOPAZ            ** Execution from Topaz with options **
+12:04:13.070 INFO      TOPAZ            ***************************************
+12:04:13.070 INFO      TOPAZ            Using repository: true
+12:04:13.070 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+12:04:13.071 INFO      TOPAZ            ***************************************
+12:04:13.071 INFO      Engine           Test Scenario execution started
+12:04:13.071 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+12:04:13.072 INFO      Engine           Setting variables from context and context data extensions
+12:04:13.072 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+12:04:13.072 INFO      Engine             id: environmentType    value: BATCH
+12:04:13.072 INFO      Engine             id: userId             value: HDDRXM0
+12:04:13.072 INFO      Engine             id: accountingInfo     value: 
+12:04:13.072 INFO      Engine             id: date               value: 2019/12/31
+12:04:13.072 INFO      Engine             id: fa_output          value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.073 INFO      Engine             id: test_input         value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.073 INFO      Engine             id: fa_master          value: HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER
+12:04:13.073 INFO      Engine             id: test_expected      value: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG
+12:04:13.073 INFO      Engine             id: userid             value: HDDRXM0
+12:04:13.073 INFO      Engine             id: test_output        value: HDDRXM0.TRAIN.LBP.CWXTRPT
+12:04:13.086 INFO      SubScript        Interpreting SubScript path:FileAidCopy.scenario
+12:04:13.089 INFO      Engine           Test Scenario execution started
+12:04:13.090 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+12:04:13.090 INFO      Engine           Setting variables from context and context data extensions
+12:04:13.090 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+12:04:13.090 INFO      Engine             id: environmentType    value: BATCH
+12:04:13.090 INFO      Engine             id: userId             value: HDDRXM0
+12:04:13.090 INFO      Engine             id: accountingInfo     value: 
+12:04:13.091 INFO      Engine             id: date               value: 2019/12/31
+12:04:13.091 INFO      Engine             id: fa_output          value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.091 INFO      Engine             id: test_input         value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.091 INFO      Engine             id: fa_master          value: HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER
+12:04:13.091 INFO      Engine             id: test_expected      value: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG
+12:04:13.091 INFO      Engine             id: userid             value: HDDRXM0
+12:04:13.092 INFO      Engine             id: test_output        value: HDDRXM0.TRAIN.LBP.CWXTRPT
+12:04:13.093 INFO      Job              Interpreting JOB: Prepare Input Dataset
+12:04:13.093 INFO      Job              Variable substitution found in Job JCL, now substituted
+12:04:13.093 INFO      CWCC Batch       Sending Job execution request to Host 
+12:04:13.688 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0191592) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0191592
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+12:04:13.689 INFO      Job              Successfully executed job: Prepare Input Dataset
+12:04:13.689 INFO      Engine           Test Scenario execution ended
+12:04:13.690 INFO      SubScript        SubScript completed
+12:04:13.690 INFO      SubScript        Interpreting SubScript path:XchangeSet.scenario
+12:04:13.706 INFO      Engine           Test Scenario execution started
+12:04:13.707 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+12:04:13.707 INFO      Engine           Setting variables from context and context data extensions
+12:04:13.707 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+12:04:13.707 INFO      Engine             id: environmentType    value: BATCH
+12:04:13.707 INFO      Engine             id: userId             value: HDDRXM0
+12:04:13.707 INFO      Engine             id: accountingInfo     value: 
+12:04:13.708 INFO      Engine             id: date               value: 2019/12/31
+12:04:13.708 INFO      Engine             id: fa_output          value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.708 INFO      Engine             id: test_input         value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:13.709 INFO      Engine             id: fa_master          value: HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER
+12:04:13.709 INFO      Engine             id: test_expected      value: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG
+12:04:13.709 INFO      Engine             id: userid             value: HDDRXM0
+12:04:13.709 INFO      Engine             id: test_output        value: HDDRXM0.TRAIN.LBP.CWXTRPT
+12:04:13.710 INFO      Job              Interpreting JOB: Set Date
+12:04:13.711 INFO      Job              Variable substitution found in Job JCL, now substituted
+12:04:13.711 INFO      CWCC Batch       Sending Job execution request to Host 
+12:04:14.777 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0G(J0191593) ended with return code: 0000
+  Job name       : HDDRXM0G
+  Job id         : J0191593
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+12:04:14.777 INFO      Job              Successfully executed job: Set Date
+12:04:14.777 INFO      Engine           Test Scenario execution ended
+12:04:14.778 INFO      SubScript        SubScript completed
+12:04:14.778 INFO      Job              Interpreting JOB: Job
+12:04:14.779 INFO      Job              Variable substitution found in Job JCL, now substituted
+12:04:14.779 INFO      CWCC Batch       Sending Job execution request to Host 
+12:04:15.486 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0191594) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0191594
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+12:04:15.487 INFO      Job              Successfully executed job: Job
+12:04:15.487 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+12:04:15.499 INFO      SubScript        Interpreting SubScript path:FileAidCompare.scenario
+12:04:15.502 INFO      Engine           Test Scenario execution started
+12:04:15.502 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+12:04:15.503 INFO      Engine           Setting variables from context and context data extensions
+12:04:15.503 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+12:04:15.503 INFO      Engine             id: environmentType    value: BATCH
+12:04:15.503 INFO      Engine             id: userId             value: HDDRXM0
+12:04:15.503 INFO      Engine             id: accountingInfo     value: 
+12:04:15.503 INFO      Engine             id: date               value: 2019/12/31
+12:04:15.503 INFO      Engine             id: fa_output          value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:15.504 INFO      Engine             id: test_input         value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:15.504 INFO      Engine             id: fa_master          value: HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER
+12:04:15.504 INFO      Engine             id: test_expected      value: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG
+12:04:15.504 INFO      Engine             id: userid             value: HDDRXM0
+12:04:15.504 INFO      Engine             id: test_output        value: HDDRXM0.TRAIN.LBP.CWXTRPT
+12:04:15.505 INFO      FileAIDCompare   Executing File-AID Compare element with assertions:
+12:04:15.505 INFO      FileAIDCompare     Assert on changed records : true
+12:04:15.506 INFO      FileAIDCompare     Assert on inserted records: true
+12:04:15.506 INFO      FileAIDCompare     Assert on deleted records : true
+12:04:15.506 INFO      FileAIDCompare   Variable substitution found in Job JCL, now substituted
+12:04:15.506 INFO      CWCC Batch       Sending Job execution request to Host 
+12:04:16.010 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0191595) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0191595
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+12:04:16.504 ERROR     FileAIDCompare   Number of records changed: 1. We now set the test scenario to failed
+12:04:16.504 INFO      Engine           Test Scenario execution ended
+12:04:16.505 INFO      SubScript        SubScript completed
+12:04:16.506 INFO      SubScript        Interpreting SubScript path:XchangeDelete.scenario
+12:04:16.508 INFO      Engine           Test Scenario execution started
+12:04:16.509 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+12:04:16.509 INFO      Engine           Setting variables from context and context data extensions
+12:04:16.509 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+12:04:16.510 INFO      Engine             id: environmentType    value: BATCH
+12:04:16.510 INFO      Engine             id: userId             value: HDDRXM0
+12:04:16.510 INFO      Engine             id: accountingInfo     value: 
+12:04:16.510 INFO      Engine             id: date               value: 2019/12/31
+12:04:16.510 INFO      Engine             id: fa_output          value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:16.510 INFO      Engine             id: test_input         value: HDDRXM0.TRAIN.LBP.CWXTDATA
+12:04:16.511 INFO      Engine             id: fa_master          value: HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER
+12:04:16.511 INFO      Engine             id: test_expected      value: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG
+12:04:16.511 INFO      Engine             id: userid             value: HDDRXM0
+12:04:16.511 INFO      Engine             id: test_output        value: HDDRXM0.TRAIN.LBP.CWXTRPT
+12:04:16.512 INFO      Job              Interpreting JOB: Remove Date
+12:04:16.512 INFO      Job              Variable substitution found in Job JCL, now substituted
+12:04:16.513 INFO      CWCC Batch       Sending Job execution request to Host 
+12:04:17.091 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0G(J0191596) ended with return code: 0000
+  Job name       : HDDRXM0G
+  Job id         : J0191596
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+12:04:17.091 INFO      Job              Successfully executed job: Remove Date
+12:04:17.091 INFO      Engine           Test Scenario execution ended
+12:04:17.092 INFO      SubScript        SubScript completed
+12:04:17.092 INFO      Engine           Test Scenario execution ended

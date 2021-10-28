@@ -1,0 +1,302 @@
+14:01:04.209 INFO      TOPAZ            ***************************************
+14:01:04.210 INFO      TOPAZ            ** Execution from Topaz with options **
+14:01:04.210 INFO      TOPAZ            ***************************************
+14:01:04.210 INFO      TOPAZ            Using repository: true
+14:01:04.210 INFO      TOPAZ            Repository URL: http://localhost:48226/totaltestapi/
+14:01:04.211 INFO      TOPAZ            ***************************************
+14:01:04.211 INFO      Engine           Test Scenario execution started
+14:01:04.212 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5cee98c2d3142c1f90a4976d
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.compuware.com
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+14:01:04.212 INFO      Engine           Setting variables from context and context data extensions
+14:01:04.212 INFO      Engine             id: environmentId      value: 5cee98c2d3142c1f90a4976d
+14:01:04.212 INFO      Engine             id: environmentType    value: BATCH
+14:01:04.213 INFO      Engine             id: userId             value: HDDRXM0
+14:01:04.213 INFO      Engine             id: accountingInfo     value: 
+14:01:04.214 INFO      Variable         Interpreting Variable id:userid
+14:01:04.214 INFO      Variable         Interpreting Variable id:datasetQualifier
+14:01:04.214 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+14:01:04.215 INFO      Variable         Interpreting Variable id:empInDatasetName
+14:01:04.215 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+14:01:04.215 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+14:01:04.215 INFO      Job              Interpreting JOB: Prepare Input Dataset
+14:01:04.216 INFO      Job              Variable substitution found in Job JCL, now substituted
+14:01:04.216 INFO      CWCC VT          Sending Job execution request to Host 
+14:01:04.798 INFO      CWCC VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0186072) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0186072
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:01:04.798 INFO      Job              Successfully executed job: Prepare Input Dataset
+14:01:04.799 INFO      Job              Interpreting JOB: Run Test
+14:01:04.799 INFO      Job              Variable substitution found in Job JCL, now substituted
+14:01:04.799 INFO      CWCC VT          Sending Job execution request to Host 
+14:01:05.504 INFO      CWCC VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0186073) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0186073
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:01:05.505 INFO      Job              Successfully executed job: Run Test
+14:01:05.505 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+14:01:05.518 INFO      ReadRemoteFile   Interpreting ReadRemoteFile for fileName: ${outDatasetNameActual} first record:1 number of records to read: 100
+14:01:05.519 INFO      ReadRemoteFile     Variable substitution found in file name
+14:01:05.519 INFO      ReadRemoteFile     File name is now:HDDRXM0.TRAIN.LBP.CWXTRPT
+14:01:05.519 INFO      ReadRemoteFile   Sending Read dataset request to Host 
+14:01:05.706 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/727e812763cd4c84be039afb412c3410
+14:01:07.305 INFO      HCIClient        Job has been started at host with JobId:J0186074
+14:01:08.234 INFO      CWCC VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0I(J0186074) ended with return code: 0000
+  Job name       : HDDRXM0I
+  Job id         : J0186074
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:01:09.093 INFO      ReadRemoteFile   Records received, count= 24
+14:01:09.093 INFO      ReadRemoteFile   The records can be refered to as an array through rptFileRecords.record[<index>]
+14:01:09.093 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:09.094 INFO      IterateData      Interpreting IterateData id: iterate. Number of data iterations: 24. Variable iterateIndex contains iteration number
+14:01:09.094 INFO      IterateData      Iteration number 0 started.
+14:01:09.094 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.094 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.127 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.127 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.169 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.169 INFO      IterateData      Iteration number 1 started.
+14:01:09.169 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.169 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.208 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.208 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.249 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.249 INFO      IterateData      Iteration number 2 started.
+14:01:09.249 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.250 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.290 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.290 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.335 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.336 INFO      IterateData      Iteration number 3 started.
+14:01:09.336 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.336 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.373 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.374 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.406 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.406 INFO      IterateData      Iteration number 4 started.
+14:01:09.406 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.406 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.440 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.440 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.475 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.475 INFO      IterateData      Iteration number 5 started.
+14:01:09.475 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.475 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.509 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.509 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.548 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.549 INFO      IterateData      Iteration number 6 started.
+14:01:09.549 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.549 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.586 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.587 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.627 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.628 INFO      IterateData      Iteration number 7 started.
+14:01:09.628 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.628 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.664 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.664 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.699 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.699 INFO      IterateData      Iteration number 8 started.
+14:01:09.699 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.699 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.735 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.735 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.777 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.778 INFO      IterateData      Iteration number 9 started.
+14:01:09.778 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.778 INFO      If               Interpreting If name:Check for Detail Row
+14:01:09.816 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:09.816 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:09.852 INFO      Log              1083.0
+14:01:09.853 INFO      Verify           Interpreting Verify component name:Verify
+14:01:09.925 INFO      Verify           Expected and Actual data was found to be identical
+14:01:09.926 INFO      If               IF completed
+14:01:09.926 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:09.962 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:09.963 INFO      IterateData      Iteration number 10 started.
+14:01:09.963 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:09.963 INFO      If               Interpreting If name:Check for Detail Row
+14:01:10.005 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:10.005 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:10.042 INFO      Log              5133.0
+14:01:10.043 INFO      Verify           Interpreting Verify component name:Verify
+14:01:10.123 INFO      Verify           Expected and Actual data was found to be identical
+14:01:10.123 INFO      If               IF completed
+14:01:10.123 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:10.159 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:10.160 INFO      IterateData      Iteration number 11 started.
+14:01:10.160 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:10.160 INFO      If               Interpreting If name:Check for Detail Row
+14:01:10.197 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:10.197 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:10.231 INFO      Log              6983.0
+14:01:10.231 INFO      Verify           Interpreting Verify component name:Verify
+14:01:10.432 INFO      Verify           Expected and Actual data was found to be identical
+14:01:10.433 INFO      If               IF completed
+14:01:10.433 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:10.472 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:10.473 INFO      IterateData      Iteration number 12 started.
+14:01:10.473 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:10.473 INFO      If               Interpreting If name:Check for Detail Row
+14:01:10.513 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:10.514 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:10.553 INFO      Log              13808.0
+14:01:10.553 INFO      Verify           Interpreting Verify component name:Verify
+14:01:10.627 INFO      Verify           Expected and Actual data was found to be identical
+14:01:10.627 INFO      If               IF completed
+14:01:10.628 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:10.673 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:10.673 INFO      IterateData      Iteration number 13 started.
+14:01:10.673 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:10.674 INFO      If               Interpreting If name:Check for Detail Row
+14:01:10.713 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:10.714 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:10.750 INFO      Log              15978.0
+14:01:10.750 INFO      Verify           Interpreting Verify component name:Verify
+14:01:10.835 INFO      Verify           Expected and Actual data was found to be identical
+14:01:10.835 INFO      If               IF completed
+14:01:10.835 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:10.877 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:10.877 INFO      IterateData      Iteration number 14 started.
+14:01:10.878 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:10.878 INFO      If               Interpreting If name:Check for Detail Row
+14:01:10.915 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:10.916 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:10.953 INFO      Log              22478.0
+14:01:10.954 INFO      Verify           Interpreting Verify component name:Verify
+14:01:11.024 INFO      Verify           Expected and Actual data was found to be identical
+14:01:11.025 INFO      If               IF completed
+14:01:11.025 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:11.067 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:11.067 INFO      IterateData      Iteration number 15 started.
+14:01:11.067 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:11.068 INFO      If               Interpreting If name:Check for Detail Row
+14:01:11.108 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:11.108 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:11.150 INFO      Log              29703.0
+14:01:11.150 INFO      Verify           Interpreting Verify component name:Verify
+14:01:11.237 INFO      Verify           Expected and Actual data was found to be identical
+14:01:11.238 INFO      If               IF completed
+14:01:11.238 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:11.286 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:11.287 INFO      IterateData      Iteration number 16 started.
+14:01:11.287 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:11.287 INFO      If               Interpreting If name:Check for Detail Row
+14:01:11.334 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:11.335 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:11.379 INFO      Log              31083.0
+14:01:11.380 INFO      Verify           Interpreting Verify component name:Verify
+14:01:11.454 INFO      Verify           Expected and Actual data was found to be identical
+14:01:11.455 INFO      If               IF completed
+14:01:11.455 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:11.495 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:11.495 INFO      IterateData      Iteration number 17 started.
+14:01:11.495 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:11.495 INFO      If               Interpreting If name:Check for Detail Row
+14:01:11.540 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:11.540 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:11.588 INFO      Log              32100.5
+14:01:11.588 INFO      Verify           Interpreting Verify component name:Verify
+14:01:11.687 INFO      Verify           Expected and Actual data was found to be identical
+14:01:11.687 INFO      If               IF completed
+14:01:11.688 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:11.730 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:11.730 INFO      IterateData      Iteration number 18 started.
+14:01:11.730 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:11.730 INFO      If               Interpreting If name:Check for Detail Row
+14:01:11.771 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:11.771 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:11.816 INFO      Log              33100.5
+14:01:11.816 INFO      Verify           Interpreting Verify component name:Verify
+14:01:11.906 INFO      Verify           Expected and Actual data was found to be identical
+14:01:11.907 INFO      If               IF completed
+14:01:11.907 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:11.948 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:11.949 INFO      IterateData      Iteration number 19 started.
+14:01:11.949 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:11.949 INFO      If               Interpreting If name:Check for Detail Row
+14:01:11.993 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:11.993 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:12.044 INFO      Log              37433.5
+14:01:12.044 INFO      Verify           Interpreting Verify component name:Verify
+14:01:12.145 INFO      Verify           Expected and Actual data was found to be identical
+14:01:12.147 INFO      If               IF completed
+14:01:12.147 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:12.196 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.197 INFO      IterateData      Iteration number 20 started.
+14:01:12.197 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:12.197 INFO      If               Interpreting If name:Check for Detail Row
+14:01:12.246 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:12.246 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:12.293 INFO      Log              38616.0
+14:01:12.294 INFO      Verify           Interpreting Verify component name:Verify
+14:01:12.383 INFO      Verify           Expected and Actual data was found to be identical
+14:01:12.384 INFO      If               IF completed
+14:01:12.384 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:12.444 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.444 INFO      IterateData      Iteration number 21 started.
+14:01:12.444 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:12.444 INFO      If               Interpreting If name:Check for Detail Row
+14:01:12.502 INFO      Variable         Interpreting Variable id:overallTotal
+14:01:12.502 INFO      Expression       Interpreting Expression:Number(overallTotal) +
+Number(currentRecord.substring(72,80).trim())
+14:01:12.565 INFO      Log              45366.0
+14:01:12.565 INFO      Verify           Interpreting Verify component name:Verify
+14:01:12.679 INFO      Verify           Expected and Actual data was found to be identical
+14:01:12.679 INFO      If               IF completed
+14:01:12.680 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:12.738 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.738 INFO      IterateData      Iteration number 22 started.
+14:01:12.739 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:12.739 INFO      If               Interpreting If name:Check for Detail Row
+14:01:12.798 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.799 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:12.858 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.858 INFO      IterateData      Iteration number 23 started.
+14:01:12.858 INFO      Variable         Interpreting Variable id:currentRecord
+14:01:12.859 INFO      If               Interpreting If name:Check for Detail Row
+14:01:12.910 INFO      If               If expression was evaluated to false. Child component(s) not executed
+14:01:12.911 INFO      If               Interpreting If name:Check for TOTAL Row
+14:01:12.961 INFO      Verify           Interpreting Verify component name:Verify Total Amount
+14:01:13.067 INFO      Verify           Expected and Actual data was found to be identical
+14:01:13.068 INFO      If               IF completed
+14:01:13.068 INFO      IterateData      IterateData completed
+14:01:13.068 INFO      Engine           Test Scenario execution ended

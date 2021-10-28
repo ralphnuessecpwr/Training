@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaUnit xmlns="http://www.xact.dk/xatester/v/1" xmlns:data="http://www.xact.dk/xatester/data/v/1" caseInsensitiveCompare="false">
+  <Test>
+    <SubScript filePath="FileAidCopy.scenario" />
+    <SubScript filePath="XchangeSet.scenario" />
+    <Job name="Job" haltExecution="false" jobLocation="JOBDEFINITION" returnCodeVerify="value &lt; 8">
+      <Content><![CDATA[//${userid}T JOB ('EUDD,INTL'),'NUESSE',NOTIFY=&SYSUID, 
+//             MSGLEVEL=(1,1),MSGCLASS=X,CLASS=A,REGION=6M 
+/*JOBPARM S=* 
+//* 
+//*   EXECUTE CWXTCOB IN BATCH 
+//* 
+//STEP1  EXEC PGM=CWXTCOB,PARM=00003 
+//STEPLIB DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE 
+//XPSL0004 DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE.SSD 
+//EMPFILE  DD  DISP=SHR,DSN=${test_input} 
+//RPTFILE  DD  DISP=SHR,DSN=${test_output} 
+//SYSOUT   DD  SYSOUT=*]]></Content>
+    </Job>
+    <SubScript filePath="FileAidCompare.scenario" />
+    <SubScript filePath="XchangeDelete.scenario" />
+  </Test>
+</XaUnit>

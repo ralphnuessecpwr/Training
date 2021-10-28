@@ -1,0 +1,257 @@
+14:38:49.103 INFO      TOPAZ            ***************************************
+14:38:49.103 INFO      TOPAZ            ** Execution from Topaz with options **
+14:38:49.104 INFO      TOPAZ            ***************************************
+14:38:49.104 INFO      TOPAZ            Using repository: true
+14:38:49.104 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+14:38:49.104 INFO      TOPAZ            ***************************************
+14:38:49.104 INFO      Engine           Test Scenario execution started
+14:38:49.104 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+14:38:49.104 INFO      Engine           Setting variables from context and context data extensions
+14:38:49.105 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+14:38:49.105 INFO      Engine             id: environmentType    value: BATCH
+14:38:49.105 INFO      Engine             id: userId             value: HDDRXM0
+14:38:49.105 INFO      Engine             id: accountingInfo     value: 
+14:38:49.105 INFO      Variable         Interpreting Variable id:userid
+14:38:49.106 INFO      Variable         Interpreting Variable id:datasetQualifier
+14:38:49.106 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+14:38:49.106 INFO      Variable         Interpreting Variable id:empInDatasetName
+14:38:49.106 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+14:38:49.106 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+14:38:49.106 INFO      Job              Interpreting JOB: Prepare Input Dataset
+14:38:49.106 INFO      Job              Variable substitution found in Job JCL, now substituted
+14:38:49.107 INFO      CWCC Batch       Sending Job execution request to Host 
+14:38:49.684 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0186691) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0186691
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:38:49.685 INFO      Job              Successfully executed job: Prepare Input Dataset
+14:38:49.685 INFO      Job              Interpreting JOB: Run Test
+14:38:49.685 INFO      Job              Variable substitution found in Job JCL, now substituted
+14:38:49.686 INFO      CWCC Batch       Sending Job execution request to Host 
+14:38:50.388 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0186692) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0186692
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:38:50.388 INFO      Job              Successfully executed job: Run Test
+14:38:50.388 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+14:38:50.396 INFO      Variable         Interpreting Variable id:rptfileExpect dataFile:../Data/rptfile_expected.xlsx
+14:38:50.425 INFO      ReadRemoteFile   Interpreting ReadRemoteFile for fileName: ${outDatasetNameActual} first record:10 number of records to read: 10
+14:38:50.426 INFO      ReadRemoteFile     Variable substitution found in file name
+14:38:50.426 INFO      ReadRemoteFile     File name is now:HDDRXM0.TRAIN.LBP.CWXTRPT
+14:38:50.426 INFO      ReadRemoteFile   Sending Read dataset request to Host 
+14:38:50.618 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/5bb57f41fa454bea95bede737fd95479
+14:38:52.171 INFO      HCIClient        Job has been started at host with JobId:J0186693
+14:38:53.090 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0I(J0186693) ended with return code: 0000
+  Job name       : HDDRXM0I
+  Job id         : J0186693
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:38:53.988 INFO      ReadRemoteFile   Records received, count= 10
+14:38:53.989 INFO      ReadRemoteFile   The records can be refered to as an array through rptFileRecords.record[<index>]
+14:38:53.989 INFO      IterateData      Interpreting IterateData id: iterate. Number of data iterations: 10. Variable iterateIndex contains iteration number
+14:38:53.989 INFO      IterateData      Iteration number 0 started.
+14:38:53.989 INFO      If               Interpreting If name:Check for Detail Row
+14:38:54.017 INFO      Verify           Interpreting Verify component name:Name
+14:38:54.061 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.062 WARNING   Verify           Values are not equal. Actual:JOHN SMITH Expected:JOHN SMITH
+14:38:54.062 INFO      Verify           Interpreting Verify component name:Salary
+14:38:54.109 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.110 WARNING   Verify           Values are not equal. Actual: 1083 Expected:1083
+14:38:54.110 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:54.159 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.159 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:54.159 INFO      Verify           Interpreting Verify component name:Commision
+14:38:54.206 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.206 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:54.206 INFO      Verify           Interpreting Verify component name:Total
+14:38:54.247 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.247 WARNING   Verify           Values are not equal. Actual: 1083 Expected:1083
+14:38:54.247 INFO      If               IF completed
+14:38:54.248 INFO      IterateData      Iteration number 1 started.
+14:38:54.248 INFO      If               Interpreting If name:Check for Detail Row
+14:38:54.274 INFO      Verify           Interpreting Verify component name:Name
+14:38:54.314 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.314 WARNING   Verify           Values are not equal. Actual:ROY GARDNER Expected:ROY GARDNER
+14:38:54.314 INFO      Verify           Interpreting Verify component name:Salary
+14:38:54.359 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.360 WARNING   Verify           Values are not equal. Actual:  750 Expected:750
+14:38:54.360 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:54.406 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.406 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:54.407 INFO      Verify           Interpreting Verify component name:Commision
+14:38:54.456 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.456 WARNING   Verify           Values are not equal. Actual: 3300 Expected:3300
+14:38:54.456 INFO      Verify           Interpreting Verify component name:Total
+14:38:54.504 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.505 WARNING   Verify           Values are not equal. Actual: 4050 Expected:4050
+14:38:54.505 INFO      If               IF completed
+14:38:54.505 INFO      IterateData      Iteration number 2 started.
+14:38:54.505 INFO      If               Interpreting If name:Check for Detail Row
+14:38:54.532 INFO      Verify           Interpreting Verify component name:Name
+14:38:54.577 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.577 WARNING   Verify           Values are not equal. Actual:DAN PEARSON Expected:DAN PEARSON
+14:38:54.577 INFO      Verify           Interpreting Verify component name:Salary
+14:38:54.631 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.631 WARNING   Verify           Values are not equal. Actual:  850 Expected:850
+14:38:54.631 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:54.688 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.688 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:54.688 INFO      Verify           Interpreting Verify component name:Commision
+14:38:54.727 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.728 WARNING   Verify           Values are not equal. Actual: 1000 Expected:1000
+14:38:54.728 INFO      Verify           Interpreting Verify component name:Total
+14:38:54.771 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.772 WARNING   Verify           Values are not equal. Actual: 1850 Expected:1850
+14:38:54.772 INFO      If               IF completed
+14:38:54.772 INFO      IterateData      Iteration number 3 started.
+14:38:54.772 INFO      If               Interpreting If name:Check for Detail Row
+14:38:54.796 INFO      Verify           Interpreting Verify component name:Name
+14:38:54.840 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.841 WARNING   Verify           Values are not equal. Actual:MICHAEL DAYTON Expected:MICHAEL DAYTON
+14:38:54.841 INFO      Verify           Interpreting Verify component name:Salary
+14:38:54.892 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.892 WARNING   Verify           Values are not equal. Actual:  825 Expected:825
+14:38:54.893 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:54.944 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.945 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:54.945 INFO      Verify           Interpreting Verify component name:Commision
+14:38:54.992 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:54.993 WARNING   Verify           Values are not equal. Actual: 6000 Expected:6000
+14:38:54.993 INFO      Verify           Interpreting Verify component name:Total
+14:38:55.047 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.047 WARNING   Verify           Values are not equal. Actual: 6825 Expected:6825
+14:38:55.047 INFO      If               IF completed
+14:38:55.047 INFO      IterateData      Iteration number 4 started.
+14:38:55.047 INFO      If               Interpreting If name:Check for Detail Row
+14:38:55.075 INFO      Verify           Interpreting Verify component name:Name
+14:38:55.127 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.127 WARNING   Verify           Values are not equal. Actual:DENNIS WHITE Expected:DENNIS WHITE
+14:38:55.127 INFO      Verify           Interpreting Verify component name:Salary
+14:38:55.176 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.177 WARNING   Verify           Values are not equal. Actual: 1050 Expected:1050
+14:38:55.177 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:55.231 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.232 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:55.232 INFO      Verify           Interpreting Verify component name:Commision
+14:38:55.294 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.294 WARNING   Verify           Values are not equal. Actual: 1120 Expected:1120
+14:38:55.294 INFO      Verify           Interpreting Verify component name:Total
+14:38:55.357 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.357 WARNING   Verify           Values are not equal. Actual: 2170 Expected:2170
+14:38:55.357 INFO      If               IF completed
+14:38:55.358 INFO      IterateData      Iteration number 5 started.
+14:38:55.358 INFO      If               Interpreting If name:Check for Detail Row
+14:38:55.392 INFO      Verify           Interpreting Verify component name:Name
+14:38:55.454 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.455 WARNING   Verify           Values are not equal. Actual:VALERIE OLSEN Expected:VALERIE OLSEN
+14:38:55.455 INFO      Verify           Interpreting Verify component name:Salary
+14:38:55.503 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.504 WARNING   Verify           Values are not equal. Actual:  900 Expected:900
+14:38:55.504 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:55.550 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.550 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:55.550 INFO      Verify           Interpreting Verify component name:Commision
+14:38:55.588 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.588 WARNING   Verify           Values are not equal. Actual: 5600 Expected:5600
+14:38:55.588 INFO      Verify           Interpreting Verify component name:Total
+14:38:55.631 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.631 WARNING   Verify           Values are not equal. Actual: 6500 Expected:6500
+14:38:55.631 INFO      If               IF completed
+14:38:55.631 INFO      IterateData      Iteration number 6 started.
+14:38:55.631 INFO      If               Interpreting If name:Check for Detail Row
+14:38:55.650 INFO      Verify           Interpreting Verify component name:Name
+14:38:55.696 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.696 WARNING   Verify           Values are not equal. Actual:LAURA MARTIN Expected:LAURA MARTIN
+14:38:55.696 INFO      Verify           Interpreting Verify component name:Salary
+14:38:55.731 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.732 WARNING   Verify           Values are not equal. Actual: 1225 Expected:1225
+14:38:55.732 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:55.777 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.778 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:55.778 INFO      Verify           Interpreting Verify component name:Commision
+14:38:55.817 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.817 WARNING   Verify           Values are not equal. Actual: 6000 Expected:6000
+14:38:55.818 INFO      Verify           Interpreting Verify component name:Total
+14:38:55.860 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.860 WARNING   Verify           Values are not equal. Actual: 7225 Expected:7225
+14:38:55.860 INFO      If               IF completed
+14:38:55.860 INFO      IterateData      Iteration number 7 started.
+14:38:55.860 INFO      If               Interpreting If name:Check for Detail Row
+14:38:55.880 INFO      Verify           Interpreting Verify component name:Name
+14:38:55.924 INFO      Verify           Expected and Actual data was found to be identical
+14:38:55.925 INFO      Verify           Interpreting Verify component name:Salary
+14:38:55.957 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:55.958 WARNING   Verify           Values are not equal. Actual: 1200 Expected:1200
+14:38:55.958 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:56.006 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.007 WARNING   Verify           Values are not equal. Actual:  180 Expected:180
+14:38:56.007 INFO      Verify           Interpreting Verify component name:Commision
+14:38:56.055 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.055 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:56.055 INFO      Verify           Interpreting Verify component name:Total
+14:38:56.104 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.104 WARNING   Verify           Values are not equal. Actual: 1380 Expected:1380
+14:38:56.104 INFO      If               IF completed
+14:38:56.105 INFO      IterateData      Iteration number 8 started.
+14:38:56.105 INFO      If               Interpreting If name:Check for Detail Row
+14:38:56.131 INFO      Verify           Interpreting Verify component name:Name
+14:38:56.180 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.181 WARNING   Verify           Values are not equal. Actual:JAMES MORRISON Expected:JAMES MORRISON
+14:38:56.181 INFO      Verify           Interpreting Verify component name:Salary
+14:38:56.232 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.232 WARNING   Verify           Values are not equal. Actual: 1017.5 Expected:1017.5
+14:38:56.232 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:56.278 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.279 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:56.279 INFO      Verify           Interpreting Verify component name:Commision
+14:38:56.314 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.314 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:56.314 INFO      Verify           Interpreting Verify component name:Total
+14:38:56.353 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.353 WARNING   Verify           Values are not equal. Actual: 1017.5 Expected:1017.5
+14:38:56.353 INFO      If               IF completed
+14:38:56.353 INFO      IterateData      Iteration number 9 started.
+14:38:56.353 INFO      If               Interpreting If name:Check for Detail Row
+14:38:56.378 INFO      Verify           Interpreting Verify component name:Name
+14:38:56.418 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.419 WARNING   Verify           Values are not equal. Actual:THOMAS LONG Expected:THOMAS LONG
+14:38:56.419 INFO      Verify           Interpreting Verify component name:Salary
+14:38:56.465 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.466 WARNING   Verify           Values are not equal. Actual: 1000 Expected:1000
+14:38:56.466 INFO      Verify           Interpreting Verify component name:Overtime
+14:38:56.513 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.514 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:56.514 INFO      Verify           Interpreting Verify component name:Commision
+14:38:56.560 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.562 WARNING   Verify           Values are not equal. Actual:    0 Expected:0
+14:38:56.562 INFO      Verify           Interpreting Verify component name:Total
+14:38:56.602 WARNING   Verify           Expected and Actual data are NOT equal
+14:38:56.603 WARNING   Verify           Values are not equal. Actual: 1000 Expected:1000
+14:38:56.603 INFO      If               IF completed
+14:38:56.603 INFO      IterateData      IterateData completed
+14:38:56.603 INFO      Engine           Test Scenario execution ended

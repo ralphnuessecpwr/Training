@@ -1,0 +1,98 @@
+10:32:01.899 INFO      TOPAZ            ***************************************
+10:32:01.899 INFO      TOPAZ            ** Execution from Topaz with options **
+10:32:01.899 INFO      TOPAZ            ***************************************
+10:32:01.899 INFO      TOPAZ            Using repository: true
+10:32:01.900 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+10:32:01.900 INFO      TOPAZ            ***************************************
+10:32:01.900 INFO      Engine           Test Scenario execution started
+10:32:01.900 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b5f2af4787be73b59238d7e
+  Environment type              : Cics
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwc2.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 600
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+10:32:01.900 INFO      Engine           Setting variables from context and context data extensions
+10:32:01.901 INFO      Engine             id: environmentId      value: 5b5f2af4787be73b59238d7e
+10:32:01.901 INFO      Engine             id: environmentType    value: CICS
+10:32:01.901 INFO      Engine             id: userId             value: HDDRXM0
+10:32:01.901 INFO      Engine             id: accountingInfo     value: 
+10:32:01.902 INFO      Variable         Interpreting Variable id:data dataFile:../Data/Excel_02_Drive_LGICUS01_data.xlsx
+10:32:01.923 INFO      IterateData      Interpreting IterateData id: iterate. Number of data iterations: 3. Variable iterateIndex contains iteration number
+10:32:01.924 INFO      IterateData      Iteration number 0 started.
+10:32:01.924 INFO      Component        Interpreting Component: LGICUS01 program:LGICUS01
+10:32:01.924 INFO      Component        Component will be executed in CICS and top level element definitions are:
+10:32:01.925 INFO      Component          Element: dfhcommarea Area type:DEFAULT
+10:32:01.926 INFO      CWC2 CICS        Sending Module execution request to Host for module:LGICUS01 rollback:false
+10:32:02.118 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/5656473e38d54af78653e8968226aa22
+10:32:04.756 INFO      HCIClient        Job has been started at host with JobId:J0191571
+10:32:05.707 INFO      CWC2 CICS        Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0C(J0191571) ended with return code: 0000
+  Job name       : HDDRXM0C
+  Job id         : J0191571
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:32:06.095 INFO      CWC2 CICS        Component completed with program exit: +0
+10:32:06.582 INFO      Component        Verifying program exit code: 0 against verify expression: value < 8
+10:32:06.592 INFO      Component        Program exit code was verified to be accepted by the expression: value < 8
+10:32:06.593 INFO      Component        Finished interpreting Component: LGICUS01 program:LGICUS01
+10:32:06.593 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-first-name. Actual value is different from expected. Actual value: ANDREW Expected value: Andrew. Actual value:ANDREW. Expected value:Andrew
+10:32:06.593 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-last-name. Actual value is different from expected. Actual value: PANDY Expected value: Pandy. Actual value:PANDY. Expected value:Pandy
+10:32:06.593 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-email-address. Actual value is different from expected. Actual value: A.PANDY@BROOKSIDE.COM Expected value: a.pandy@brookside.com. Actual value:A.PANDY@BROOKSIDE.COM. Expected value:a.pandy@brookside.com
+10:32:06.593 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-city. Actual value is different from expected. Actual value: MAHOPAC Expected value: Mahopac. Actual value:MAHOPAC. Expected value:Mahopac
+10:32:06.593 INFO      Engine           Component name:LGICUS01 contains data that was not verified correctly
+10:32:06.594 INFO      IterateData      Iteration number 1 started.
+10:32:06.594 INFO      Component        Interpreting Component: LGICUS01 program:LGICUS01
+10:32:06.594 INFO      Component        Component will be executed in CICS and top level element definitions are:
+10:32:06.594 INFO      Component          Element: dfhcommarea Area type:DEFAULT
+10:32:06.596 INFO      CWC2 CICS        Sending Module execution request to Host for module:LGICUS01 rollback:false
+10:32:07.358 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/386f88e9d3e64409ba2373a52da2e466
+10:32:10.673 INFO      HCIClient        Job has been started at host with JobId:J0191572
+10:32:11.616 INFO      CWC2 CICS        Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0C(J0191572) ended with return code: 0000
+  Job name       : HDDRXM0C
+  Job id         : J0191572
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:32:11.993 INFO      CWC2 CICS        Component completed with program exit: +0
+10:32:12.495 INFO      Component        Verifying program exit code: 0 against verify expression: value < 8
+10:32:12.503 INFO      Component        Program exit code was verified to be accepted by the expression: value < 8
+10:32:12.503 INFO      Component        Finished interpreting Component: LGICUS01 program:LGICUS01
+10:32:12.504 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-first-name. Actual value is different from expected. Actual value: SCOTT Expected value: Scott. Actual value:SCOTT. Expected value:Scott
+10:32:12.504 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-last-name. Actual value is different from expected. Actual value: TRACEY Expected value: Tracei. Actual value:TRACEY. Expected value:Tracei
+10:32:12.504 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-email-address. Actual value is different from expected. Actual value: STRACEY@GAHOLDINGS.COM Expected value: stracey@gaholdings.com. Actual value:STRACEY@GAHOLDINGS.COM. Expected value:stracey@gaholdings.com
+10:32:12.504 INFO      ExpectedData     VerificationResult : DataItem: /dfhcommarea/ca-customer-request/ca-city. Actual value is different from expected. Actual value: ATTLEBORO Expected value: Attleboro. Actual value:ATTLEBORO. Expected value:Attleboro
+10:32:12.504 INFO      Engine           Component name:LGICUS01 contains data that was not verified correctly
+10:32:12.504 INFO      IterateData      Iteration number 2 started.
+10:32:12.504 INFO      Component        Interpreting Component: LGICUS01 program:LGICUS01
+10:32:12.505 INFO      Component        Component will be executed in CICS and top level element definitions are:
+10:32:12.505 INFO      Component          Element: dfhcommarea Area type:DEFAULT
+10:32:12.506 INFO      CWC2 CICS        Sending Module execution request to Host for module:LGICUS01 rollback:false
+10:32:13.274 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/b437290264b94a1781dd8227ace19a11
+10:32:14.854 INFO      HCIClient        Job has been started at host with JobId:J0191573
+10:32:15.801 INFO      CWC2 CICS        Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0C(J0191573) ended with return code: 0000
+  Job name       : HDDRXM0C
+  Job id         : J0191573
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:32:16.179 INFO      CWC2 CICS        Component completed with program exit: +0
+10:32:16.676 INFO      Component        Verifying program exit code: 0 against verify expression: value < 8
+10:32:16.689 INFO      Component        Program exit code was verified to be accepted by the expression: value < 8
+10:32:16.690 INFO      Component        Finished interpreting Component: LGICUS01 program:LGICUS01
+10:32:16.690 INFO      IterateData      IterateData completed
+10:32:16.691 INFO      Engine           Test Scenario execution ended

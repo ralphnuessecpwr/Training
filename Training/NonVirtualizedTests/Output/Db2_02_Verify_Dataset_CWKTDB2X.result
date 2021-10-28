@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaUnitResult resultType="SUCCESS" containsSimulation="false">
+  <ExecutionId>ac3c7892-0921-4877-88c8-1797e8deac87</ExecutionId>
+  <Message />
+  <AST>
+    <XaUnit xmlns="http://www.xact.dk/xatester/v/1" xmlns:data="http://www.xact.dk/xatester/data/v/1" caseInsensitiveCompare="false">
+      <Test>
+        <Variable id="lpar">CWC2</Variable>
+        <Variable id="subsys">DSC2</Variable>
+        <Variable id="inDataset">HDDRXM0.TRAIN.LBP.CWKTDATA</Variable>
+        <Variable id="outDataset">HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE</Variable>
+        <Variable id="compareRptfileDataset">HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE.EXPCT</Variable>
+        <Job name="Load DB2" haltExecution="true" datasetName="HDDRXM0.DEMO.CWC2.UTIL.JCL(LODKTBEF)" jobLocation="DATASET" returnCodeVerify="value == 0" resultReturnCode="0000">
+          <Content><![CDATA[//XXX DD DSN=]]></Content>
+        </Job>
+        <Component label="CWKTDB2X" moduleName="CWKTDB2X" programExitVerify="value &lt; 8" programExit="0" rollback="false">
+          <Data>
+            <parminfo>
+              <parm-lth>5</parm-lth>
+              <parm-data>00001</parm-data>
+              <grand-total expected="7160">7160</grand-total>
+              <total-record expected="8">8</total-record>
+            </parminfo>
+          </Data>
+          <Setup>
+            <Content><![CDATA[//EMPFILE DD DISP=SHR,DSN=HDDRXM0.TRAIN.LBP.CWKTDATA
+//RPTFILE DD DISP=SHR,DSN=HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE]]></Content>
+          </Setup>
+        </Component>
+        <ReadRemoteFile fileName="HDDRXM0.TRAIN.LBP.CWKTDATA" id="readInputDataset" label="Read Input File" firstRecord="1" numberRecords="50" mDataDefinitionName="KTDEMP">
+          <Records>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>3431</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>2</wa-emp-region>
+                <wa-emp-name>GAIL LAWRENCE</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>123 NORTH AVE</wa-emp-street>
+                  <wa-emp-city>PLANO</wa-emp-city>
+                  <wa-emp-state>TX</wa-emp-state>
+                  <wa-emp-zip>57010</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>38</wa-emp-hours>
+                  <wa-emp-rate>25</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>84</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>6</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>25</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>2523</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>1</wa-emp-region>
+                <wa-emp-name>JOHN SMITH</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>5456 ELM STREET</wa-emp-street>
+                  <wa-emp-city>WAYNE</wa-emp-city>
+                  <wa-emp-state>IL</wa-emp-state>
+                  <wa-emp-zip>77902</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>30</wa-emp-hours>
+                  <wa-emp-rate>25</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>81</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>10</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>15</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>1568</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>4</wa-emp-region>
+                <wa-emp-name>THOMAS LONG</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>12 RACE STREET</wa-emp-street>
+                  <wa-emp-city>SAN JOSE</wa-emp-city>
+                  <wa-emp-state>CA</wa-emp-state>
+                  <wa-emp-zip>95126</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>40</wa-emp-hours>
+                  <wa-emp-rate>25</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>87</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>3</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>31</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>3241</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>3</wa-emp-region>
+                <wa-emp-name>MARCIA SULLIVAN</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>55 SOUTH STREET</wa-emp-street>
+                  <wa-emp-city>NEW YORK</wa-emp-city>
+                  <wa-emp-state>NY</wa-emp-state>
+                  <wa-emp-zip>10017</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>44</wa-emp-hours>
+                  <wa-emp-rate>30</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>93</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>4</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>5</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>1343</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>3</wa-emp-region>
+                <wa-emp-name>JAMES MORRISON</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>11-A MAPLE AVE</wa-emp-street>
+                  <wa-emp-city>SYRACUSE</wa-emp-city>
+                  <wa-emp-state>NY</wa-emp-state>
+                  <wa-emp-zip>12123</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>37</wa-emp-hours>
+                  <wa-emp-rate>27.5</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>91</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>9</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>13</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>2171</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>4</wa-emp-region>
+                <wa-emp-name>SAMUEL ADDAMS</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>900 LINCOLN CT</wa-emp-street>
+                  <wa-emp-city>RENO</wa-emp-city>
+                  <wa-emp-state>NV</wa-emp-state>
+                  <wa-emp-zip>82433</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>42</wa-emp-hours>
+                  <wa-emp-rate>27.5</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>86</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>1</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>2</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>2175</wa-emp-num>
+                <wa-emp-type>H</wa-emp-type>
+                <wa-emp-region>2</wa-emp-region>
+                <wa-emp-name>KATIE WILLIAMS</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>123 MAIN ST</wa-emp-street>
+                  <wa-emp-city>COLUMBUS</wa-emp-city>
+                  <wa-emp-state>OH</wa-emp-state>
+                  <wa-emp-zip>43082</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>32</wa-emp-hours>
+                  <wa-emp-rate>27.5</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>96</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>10</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>2</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+            <Record>
+              <employee-work-area>
+                <wa-emp-num>59999</wa-emp-num>
+                <wa-emp-type>D</wa-emp-type>
+                <wa-emp-region>3</wa-emp-region>
+                <wa-emp-name>MAX E MILLION</wa-emp-name>
+                <wa-emp-address>
+                  <wa-emp-street>100 MAIN STREET</wa-emp-street>
+                  <wa-emp-city>MAIN</wa-emp-city>
+                  <wa-emp-state>OH</wa-emp-state>
+                  <wa-emp-zip>34093</wa-emp-zip>
+                </wa-emp-address>
+                <wa-hourly-employee-data>
+                  <wa-emp-hours>88</wa-emp-hours>
+                  <wa-emp-rate>25</wa-emp-rate>
+                  <filler1 />
+                </wa-hourly-employee-data>
+                <wa-emp-hire-date>
+                  <wa-emp-hire-yy>91</wa-emp-hire-yy>
+                  <wa-emp-hire-mm>3</wa-emp-hire-mm>
+                  <wa-emp-hire-dd>23</wa-emp-hire-dd>
+                </wa-emp-hire-date>
+                <filler1 />
+              </employee-work-area>
+            </Record>
+          </Records>
+        </ReadRemoteFile>
+        <IterateData id="iterateInputDataset" referencedId="readInputDataset" dataPath="">
+          <Variable id="empNumber">3431</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 3431</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>03431</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>GAIL LAWRENCE</FIRST_LAST_NAME>
+              <HOURS>38</HOURS>
+              <RATE>25.00</RATE>
+              <WAGES>950.00</WAGES>
+              <OVERTIME>0.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>GAIL LAWRENCE</Expected>
+              <Actual>GAIL LAWRENCE</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">2523</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 2523</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>02523</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>JOHN SMITH</FIRST_LAST_NAME>
+              <HOURS>30</HOURS>
+              <RATE>25.00</RATE>
+              <WAGES>750.00</WAGES>
+              <OVERTIME>0.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>JOHN SMITH</Expected>
+              <Actual>JOHN SMITH</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">1568</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 1568</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>01568</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>THOMAS LONG</FIRST_LAST_NAME>
+              <HOURS>40</HOURS>
+              <RATE>25.00</RATE>
+              <WAGES>1000.00</WAGES>
+              <OVERTIME>0.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>THOMAS LONG</Expected>
+              <Actual>THOMAS LONG</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">3241</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 3241</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>03241</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>MARCIA SULLIVAN</FIRST_LAST_NAME>
+              <HOURS>44</HOURS>
+              <RATE>30.00</RATE>
+              <WAGES>1200.00</WAGES>
+              <OVERTIME>180.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>MARCIA SULLIVAN</Expected>
+              <Actual>MARCIA SULLIVAN</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">1343</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 1343</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>01343</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>JAMES MORRISON</FIRST_LAST_NAME>
+              <HOURS>37</HOURS>
+              <RATE>27.50</RATE>
+              <WAGES>1017.50</WAGES>
+              <OVERTIME>0.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>JAMES MORRISON</Expected>
+              <Actual>JAMES MORRISON</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">2171</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 2171</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>02171</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>SAMUEL ADDAMS</FIRST_LAST_NAME>
+              <HOURS>42</HOURS>
+              <RATE>27.50</RATE>
+              <WAGES>1100.00</WAGES>
+              <OVERTIME>82.50</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>SAMUEL ADDAMS</Expected>
+              <Actual>SAMUEL ADDAMS</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">2175</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 2175</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+            <Row>
+              <EMP_NUM>02175</EMP_NUM>
+              <WAGE_TYPE>H</WAGE_TYPE>
+              <FIRST_LAST_NAME>KATIE WILLIAMS</FIRST_LAST_NAME>
+              <HOURS>32</HOURS>
+              <RATE>27.50</RATE>
+              <WAGES>880.00</WAGES>
+              <OVERTIME>0.00</OVERTIME>
+              <COMM>0.00</COMM>
+            </Row>
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+            <Verify name="Verify Name" haltExecution="true">
+              <Expected>KATIE WILLIAMS</Expected>
+              <Actual>KATIE WILLIAMS</Actual>
+            </Verify>
+            <Verify name="Verify Type" haltExecution="false">
+              <Expected>H</Expected>
+              <Actual>H</Actual>
+            </Verify>
+          </If>
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'" />
+          <Variable id="empNumber">59999</Variable>
+          <SQLSelect id="db2Row" maxRows="20">
+            <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = 59999</Statement>
+            <Output name="EMP_NUM" />
+            <Output name="WAGE_TYPE" />
+            <Output name="FIRST_LAST_NAME" />
+            <Output name="HOURS" />
+            <Output name="RATE" />
+            <Output name="WAGES" />
+            <Output name="OVERTIME" />
+            <Output name="COMM" />
+          </SQLSelect>
+          <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'" />
+          <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'">
+            <Verify name="Verify" haltExecution="false">
+              <Statement><![CDATA[db2Row.Row == null]]></Statement>
+            </Verify>
+          </If>
+        </IterateData>
+      </Test>
+      <MetaData>
+        <Component name="CWKTDB2X" type="COBOL">
+          <INOUT>
+            <parminfo>
+              <parm-lth type="NumericBinary" length="4" bytes="2" signed="true" decimals="0" signsep="false" signpos="" />
+              <parm-data type="Character" length="5" bytes="5" />
+              <grand-total type="NumericBinary" length="7" bytes="4" signed="true" decimals="0" signsep="false" signpos="" />
+              <total-record type="NumericDisplay" length="3" bytes="3" signed="false" decimals="0" signsep="false" signpos="" />
+            </parminfo>
+          </INOUT>
+        </Component>
+      </MetaData>
+    </XaUnit>
+  </AST>
+  <Context>
+    <ExecutionContext xmlns="http://www.xact.dk/xatester/v/1" environment="5b5089c9787be73b59238d35" logLevel="INFO" remote="false" useSimulations="true" uploadResult="false" timeout="300" readTimeout="30" debuggerType="NONE" jobInfoInterval="3" userid="HDDRXM0" database="DSCCCWCC">
+      <platformruntime callinterface="NONE" database="DSC2MSTR" driver="com.ibm.db2.jcc.DB2Driver" uri="jdbc:db2://cwc2.nasa.cpwr.corp:2846/${database}" environmenttype="BATCH" />
+      <ExtensionData />
+      <ExtensionData componentName="cwktdb2x" componentId="607d5d8118074201341299bd">
+        <Parameter key="db2id">
+          <Value>DSC2</Value>
+        </Parameter>
+        <Parameter key="db2plan">
+          <Value>RXNKTDB2</Value>
+        </Parameter>
+        <Parameter key="sourcelibrary">
+          <Value>hddrxm0.demo.cob.batch</Value>
+        </Parameter>
+        <Parameter key="loadlibraries">
+          <Value>HDDRXM0.DEMO.${lpar}.LOAD.PDSE</Value>
+          <Value>DSNC10.${subsys}.SDSNEXIT</Value>
+          <Value>DSNC10.SDSNEXIT</Value>
+          <Value>DSNC10.SDSNLOAD</Value>
+        </Parameter>
+        <Parameter key="callinterface">
+          <Value>NONE</Value>
+        </Parameter>
+      </ExtensionData>
+      <References componentName="cwktdb2x" />
+      <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" componentNameUnderTest="CWKTDB2X" caseInsensitiveCompare="false" path="Db2_02_Verify_Dataset_CWKTDB2X.scenario">
+        <Test>
+          <Variable id="lpar">CWC2</Variable>
+          <Variable id="subsys">DSC2</Variable>
+          <Variable id="inDataset">HDDRXM0.TRAIN.LBP.CWKTDATA</Variable>
+          <Variable id="outDataset">HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE</Variable>
+          <Variable id="compareRptfileDataset">HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE.EXPCT</Variable>
+          <Job name="Load DB2" haltExecution="true" datasetName="HDDRXM0.DEMO.CWC2.UTIL.JCL(LODKTBEF)" jobLocation="DATASET" returnCodeVerify="value == 0">
+            <Content><![CDATA[//XXX DD DSN=]]></Content>
+          </Job>
+          <Component label="CWKTDB2X" moduleName="CWKTDB2X" programExitVerify="value &lt; 8" rollback="false">
+            <Data>
+              <parminfo>
+                <parm-lth>5</parm-lth>
+                <parm-data>00001</parm-data>
+                <grand-total expected="7160" />
+                <total-record expected="8" />
+              </parminfo>
+            </Data>
+            <Setup>
+              <Content><![CDATA[//EMPFILE DD DISP=SHR,DSN=${inDataset}
+//RPTFILE DD DISP=SHR,DSN=${outDataset}]]></Content>
+            </Setup>
+          </Component>
+          <ReadRemoteFile fileName="${inDataset}" id="readInputDataset" label="Read Input File" firstRecord="1" numberRecords="50" mDataDefinitionName="KTDEMP" />
+          <IterateData id="iterateInputDataset" referencedId="readInputDataset" dataPath="">
+            <Variable id="empNumber">=iterateInputDataset.record['employee-work-area']['wa-emp-num']</Variable>
+            <SQLSelect id="db2Row" maxRows="20">
+              <Statement>SELECT &#xD;
+	  EMP_NUM&#xD;
+	, WAGE_TYPE&#xD;
+	, FIRST_LAST_NAME&#xD;
+	, HOURS&#xD;
+	, RATE&#xD;
+	, WAGES&#xD;
+	, OVERTIME&#xD;
+	, COMM&#xD;
+ FROM HDDRXM0.KT_DEMOTAB2&#xD;
+ WHERE     EMP_NUM = ${empNumber}</Statement>
+              <Output name="EMP_NUM" />
+              <Output name="WAGE_TYPE" />
+              <Output name="FIRST_LAST_NAME" />
+              <Output name="HOURS" />
+              <Output name="RATE" />
+              <Output name="WAGES" />
+              <Output name="OVERTIME" />
+              <Output name="COMM" />
+            </SQLSelect>
+            <If name="If not deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] != 'D'">
+              <Verify name="Verify Name" haltExecution="true">
+                <Expected expression="iterateInputDataset.record['employee-work-area']['wa-emp-name']" />
+                <Actual expression="db2Row.Row.FIRST_LAST_NAME" />
+              </Verify>
+              <Verify name="Verify Type" haltExecution="false">
+                <Expected expression="iterateInputDataset.record['employee-work-area']['wa-emp-type']" />
+                <Actual expression="db2Row.Row.WAGE_TYPE" />
+              </Verify>
+            </If>
+            <If name="If Deleted" expression="iterateInputDataset.record['employee-work-area']['wa-emp-type'] == 'D'">
+              <Verify name="Verify" haltExecution="false">
+                <Statement><![CDATA[db2Row.Row == null]]></Statement>
+              </Verify>
+            </If>
+          </IterateData>
+        </Test>
+        <MetaData>
+          <MDataDefinition name="RPTEMPDT">
+            <employee-dtl native="01 EMPLOYEE-DTL.">
+              <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+              <emp-dtl-name type="Character" length="15" bytes="15" native="05 EMP-DTL-NAME PIC X(15)." />
+              <filler2 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+              <emp-dtl-region type="Character" length="5" bytes="5" native="05 EMP-DTL-REGION PIC X(5)." />
+              <filler3 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+              <emp-dtl-type type="Character" length="1" bytes="1" native="05 EMP-DTL-TYPE PIC X." />
+              <filler4 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+              <emp-dtl-hire-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+              <emp-dtl-slash1 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH1 PIC X VALUE SPACES." />
+              <emp-dtl-hire-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+              <emp-dtl-slash2 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH2 PIC X VALUE SPACES." />
+              <emp-dtl-hire-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+              <filler5 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+              <emp-dtl-yrs-of-service type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-YRS-OF-SERVICE PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+              <filler6 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+              <emp-dtl-wages type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-WAGES PIC ZZZZ9.99." signed="false" decimals="2" signsep="false" signpos="" />
+              <filler7 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+              <emp-dtl-ot type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-OT PIC ZZZZ9.99." signed="false" decimals="2" signsep="false" signpos="" />
+              <filler8 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+              <emp-dtl-comm type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-COMM PIC ZZZZ9.99." signed="false" decimals="2" signsep="false" signpos="" />
+              <filler9 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+              <emp-dtl-total type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-TOTAL PIC ZZZZ9.99." signed="false" decimals="2" signsep="false" signpos="" />
+            </employee-dtl>
+          </MDataDefinition>
+          <MDataDefinition name="KTDEMP">
+            <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+              <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+              <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+              <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+              <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+              <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+              </wa-emp-address>
+              <wa-hourly-employee-data native="05 WA-HOURLY-EMPLOYEE-DATA.">
+                <wa-emp-hours type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HOURS PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                <wa-emp-rate type="NumericPacked" length="3" bytes="3" native="10 WA-EMP-RATE PIC 9(3)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                <filler1 type="Character" length="8" bytes="8" native="10 FILLER PIC X(8)." />
+              </wa-hourly-employee-data>
+              <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+              </wa-emp-hire-date>
+              <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+            </employee-work-area>
+          </MDataDefinition>
+          <Component name="CWKTDB2X" type="COBOL">
+            <INOUT>
+              <parminfo>
+                <parm-lth type="NumericBinary" length="4" bytes="2" signed="true" decimals="0" signsep="false" signpos="" />
+                <parm-data type="Character" length="5" bytes="5" />
+                <grand-total type="NumericBinary" length="7" bytes="4" signed="true" decimals="0" signsep="false" signpos="" />
+                <total-record type="NumericDisplay" length="3" bytes="3" signed="false" decimals="0" signsep="false" signpos="" />
+              </parminfo>
+            </INOUT>
+          </Component>
+        </MetaData>
+      </XaUnit>
+      <ExternalResources />
+    </ExecutionContext>
+  </Context>
+  <Started>20210927-15-32-15</Started>
+  <Ended>20210927-15-32-41</Ended>
+</XaUnitResult>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaUnit xmlns="http://www.xact.dk/xatester/v/1" xmlns:data="http://www.xact.dk/xatester/data/v/1" caseInsensitiveCompare="false">
+  <Test>
+    <Variable id="assignmentIdGood">GITE000019</Variable>
+    <Variable id="assignmentIdNotFound">GITE000020</Variable>
+    <RestService id="Rest1" label="Demo1 - Should find assignment and pass" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdGood}" httpType="GET" statusCodeVerify="value&gt;=200 &amp;&amp; value&lt;400">
+      <HttpHeaders>
+        <Header key="authorization" value="665fc9fb-39de-428a-8a67-a3619752873d" />
+      </HttpHeaders>
+      <ResponseVerify><![CDATA[{"stream":"GITDEMO1","application":"GITE","defaultPath":"UT1","description":"Push to development","owner":"HDDRXM0","refNumber":" ","releaseId":" ","userTag":" ","assignmentId":"GITE000019"}]]></ResponseVerify>
+    </RestService>
+    <RestService id="Rest2" label="Demo2 - Should not find assignment and pass" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdNotFound}" httpType="GET" statusCodeVerify="value == 409">
+      <HttpHeaders>
+        <Header key="authorization" value="665fc9fb-39de-428a-8a67-a3619752873d" />
+      </HttpHeaders>
+      <ResponseVerify><![CDATA[{"message":"Assignment with id GITE000020 not found."}]]></ResponseVerify>
+    </RestService>
+    <RestService id="Rest3" label="Demo3 - Should find assignment and fail" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdGood}" httpType="GET" statusCodeVerify="value==409">
+      <HttpHeaders>
+        <Header key="authorization" value="665fc9fb-39de-428a-8a67-a3619752873d" />
+      </HttpHeaders>
+      <ResponseVerify><![CDATA[{"message":"Assignment with id ${assignmentIdGood} not found."}]]></ResponseVerify>
+    </RestService>
+    <RestService id="Rest4" label="Demo4 - Should find assignment and fail in response data" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdGood}" httpType="GET" statusCodeVerify="value&gt;=200 &amp;&amp; value&lt;400">
+      <HttpHeaders>
+        <Header key="authorization" value="665fc9fb-39de-428a-8a67-a3619752873d" />
+      </HttpHeaders>
+      <ResponseVerify><![CDATA[{"stream":"GITDEMO1","application":"GITE","defaultPath":"UT2","description":"Push to feature/FT2/demo_feature","owner":"HDDRXM0","refNumber":" ","releaseId":" ","userTag":" ","assignmentId":"${assignmentIdGood}"}]]></ResponseVerify>
+    </RestService>
+    <Variable id="responseBody">
+      <data:Replaceable>
+        <Expression>
+          <Statement><![CDATA[JSON.parse(Rest4.response.body)]]></Statement>
+        </Expression>
+      </data:Replaceable>
+    </Variable>
+    <Verify name="Verify Stream" haltExecution="false">
+      <Expected>GITDEMO1</Expected>
+      <Actual expression="responseBody.stream" />
+    </Verify>
+    <Verify name="Verify Description" haltExecution="false">
+      <Expected>Push to feature/FT2/demo_feature</Expected>
+      <Actual expression="responseBody.description" />
+    </Verify>
+  </Test>
+</XaUnit>

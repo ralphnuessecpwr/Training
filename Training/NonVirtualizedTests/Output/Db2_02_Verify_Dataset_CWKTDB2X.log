@@ -1,0 +1,267 @@
+15:32:15.669 INFO      TOPAZ            ***************************************
+15:32:15.669 INFO      TOPAZ            ** Execution from Topaz with options **
+15:32:15.670 INFO      TOPAZ            ***************************************
+15:32:15.670 INFO      TOPAZ            Using repository: true
+15:32:15.670 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+15:32:15.670 INFO      TOPAZ            ***************************************
+15:32:15.671 INFO      Engine           Test Scenario execution started
+15:32:15.671 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b5089c9787be73b59238d35
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwc2.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+15:32:15.671 INFO      Engine           Setting variables from context and context data extensions
+15:32:15.671 INFO      Engine             id: environmentId      value: 5b5089c9787be73b59238d35
+15:32:15.671 INFO      Engine             id: environmentType    value: BATCH
+15:32:15.671 INFO      Engine             id: userId             value: HDDRXM0
+15:32:15.671 INFO      Engine             id: accountingInfo     value: 
+15:32:15.672 INFO      Variable         Interpreting Variable id:lpar
+15:32:15.672 INFO      Variable         Interpreting Variable id:subsys
+15:32:15.672 INFO      Variable         Interpreting Variable id:inDataset
+15:32:15.672 INFO      Variable         Interpreting Variable id:outDataset
+15:32:15.672 INFO      Variable         Interpreting Variable id:compareRptfileDataset
+15:32:15.672 INFO      Job              Interpreting JOB: Load DB2
+15:32:15.672 INFO      Job              The Job in File/Dataset HDDRXM0.DEMO.CWC2.UTIL.JCL(LODKTBEF) will be executed
+15:32:15.673 INFO      CWC2 Batch       Sending Job execution request to Host 
+15:32:21.083 INFO      CWC2 Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0L(J0186742) ended with return code: 0000
+  Job name       : HDDRXM0L
+  Job id         : J0186742
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+15:32:21.084 INFO      Job              Successfully executed job: Load DB2
+15:32:21.084 INFO      Component        Verifying job return code: 0000 against verify expression: value == 0
+15:32:21.104 INFO      Component        Interpreting Component: CWKTDB2X program:CWKTDB2X
+15:32:21.105 INFO      Component        Using setup JCL for execution
+15:32:21.105 INFO      Component          Variable substitution found in setup JCL, now substituted
+15:32:21.106 INFO      Component          JCL for setup:
+//EMPFILE DD DISP=SHR,DSN=HDDRXM0.TRAIN.LBP.CWKTDATA
+//RPTFILE DD DISP=SHR,DSN=HDDRXM0.DEMO.CWC2.KTDEMO.RPTFILE
+15:32:21.107 INFO      CWC2 Batch       Sending Module execution request to Host for module:CWKTDB2X rollback:false
+15:32:21.298 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/5cdfdf7d1dcb49fe82944fdf1400ff15
+15:32:22.899 INFO      HCIClient        Job has been started at host with JobId:J0186743
+15:32:28.651 INFO      CWC2 Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0E(J0186743) ended with return code: 0000
+  Job name       : HDDRXM0E
+  Job id         : J0186743
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+15:32:29.030 INFO      CWC2 Batch       Component completed with program exit: +0
+15:32:29.418 INFO      Component        Verifying program exit code: 0 against verify expression: value < 8
+15:32:29.430 INFO      Component        Program exit code was verified to be accepted by the expression: value < 8
+15:32:29.431 INFO      Component        Finished interpreting Component: CWKTDB2X program:CWKTDB2X
+15:32:29.431 INFO      ReadRemoteFile   Interpreting ReadRemoteFile for fileName: ${inDataset} first record:1 number of records to read: 50
+15:32:29.432 INFO      ReadRemoteFile     Variable substitution found in file name
+15:32:29.432 INFO      ReadRemoteFile     File name is now:HDDRXM0.TRAIN.LBP.CWKTDATA
+15:32:29.432 INFO      ReadRemoteFile   Sending Read dataset request to Host 
+15:32:30.005 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/be4df4b7147944b89ec44648cf5e6150
+15:32:31.589 INFO      HCIClient        Job has been started at host with JobId:J0186744
+15:32:32.526 INFO      CWC2 Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0I(J0186744) ended with return code: 0000
+  Job name       : HDDRXM0I
+  Job id         : J0186744
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+15:32:33.421 INFO      ReadRemoteFile   Records received, count= 8
+15:32:33.422 INFO      ReadRemoteFile   The records can be refered to as an array through readInputDataset.record[<index>]
+15:32:33.424 INFO      IterateData      Interpreting IterateData id: iterateInputDataset. Number of data iterations: 8. Variable iterateInputDatasetIndex contains iteration number
+15:32:33.425 INFO      IterateData      Iteration number 0 started.
+15:32:33.425 INFO      Variable         Interpreting Variable id:empNumber
+15:32:33.426 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:33.427 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:34.313 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:34.315 INFO      If               Interpreting If name:If not deleted
+15:32:34.359 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:34.400 INFO      Verify           Expected and Actual data was found to be identical
+15:32:34.400 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:34.437 INFO      Verify           Expected and Actual data was found to be identical
+15:32:34.438 INFO      If               IF completed
+15:32:34.438 INFO      If               Interpreting If name:If Deleted
+15:32:34.457 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:34.457 INFO      IterateData      Iteration number 1 started.
+15:32:34.457 INFO      Variable         Interpreting Variable id:empNumber
+15:32:34.457 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:34.458 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:35.303 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:35.304 INFO      If               Interpreting If name:If not deleted
+15:32:35.346 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:35.384 INFO      Verify           Expected and Actual data was found to be identical
+15:32:35.384 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:35.420 INFO      Verify           Expected and Actual data was found to be identical
+15:32:35.420 INFO      If               IF completed
+15:32:35.420 INFO      If               Interpreting If name:If Deleted
+15:32:35.437 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:35.438 INFO      IterateData      Iteration number 2 started.
+15:32:35.438 INFO      Variable         Interpreting Variable id:empNumber
+15:32:35.438 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:35.438 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:36.284 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:36.285 INFO      If               Interpreting If name:If not deleted
+15:32:36.331 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:36.386 INFO      Verify           Expected and Actual data was found to be identical
+15:32:36.386 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:36.421 INFO      Verify           Expected and Actual data was found to be identical
+15:32:36.421 INFO      If               IF completed
+15:32:36.421 INFO      If               Interpreting If name:If Deleted
+15:32:36.440 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:36.441 INFO      IterateData      Iteration number 3 started.
+15:32:36.441 INFO      Variable         Interpreting Variable id:empNumber
+15:32:36.441 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:36.441 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:37.282 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:37.283 INFO      If               Interpreting If name:If not deleted
+15:32:37.321 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:37.359 INFO      Verify           Expected and Actual data was found to be identical
+15:32:37.359 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:37.401 INFO      Verify           Expected and Actual data was found to be identical
+15:32:37.401 INFO      If               IF completed
+15:32:37.402 INFO      If               Interpreting If name:If Deleted
+15:32:37.422 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:37.423 INFO      IterateData      Iteration number 4 started.
+15:32:37.423 INFO      Variable         Interpreting Variable id:empNumber
+15:32:37.423 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:37.423 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:38.273 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:38.274 INFO      If               Interpreting If name:If not deleted
+15:32:38.311 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:38.357 INFO      Verify           Expected and Actual data was found to be identical
+15:32:38.357 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:38.393 INFO      Verify           Expected and Actual data was found to be identical
+15:32:38.394 INFO      If               IF completed
+15:32:38.394 INFO      If               Interpreting If name:If Deleted
+15:32:38.413 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:38.413 INFO      IterateData      Iteration number 5 started.
+15:32:38.413 INFO      Variable         Interpreting Variable id:empNumber
+15:32:38.413 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:38.413 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:39.258 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:39.260 INFO      If               Interpreting If name:If not deleted
+15:32:39.314 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:39.355 INFO      Verify           Expected and Actual data was found to be identical
+15:32:39.356 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:39.395 INFO      Verify           Expected and Actual data was found to be identical
+15:32:39.395 INFO      If               IF completed
+15:32:39.395 INFO      If               Interpreting If name:If Deleted
+15:32:39.414 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:39.414 INFO      IterateData      Iteration number 6 started.
+15:32:39.414 INFO      Variable         Interpreting Variable id:empNumber
+15:32:39.414 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:39.414 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:40.254 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:1
+15:32:40.254 INFO      If               Interpreting If name:If not deleted
+15:32:40.281 INFO      Verify           Interpreting Verify component name:Verify Name
+15:32:40.322 INFO      Verify           Expected and Actual data was found to be identical
+15:32:40.323 INFO      Verify           Interpreting Verify component name:Verify Type
+15:32:40.361 INFO      Verify           Expected and Actual data was found to be identical
+15:32:40.361 INFO      If               IF completed
+15:32:40.361 INFO      If               Interpreting If name:If Deleted
+15:32:40.380 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:40.380 INFO      IterateData      Iteration number 7 started.
+15:32:40.380 INFO      Variable         Interpreting Variable id:empNumber
+15:32:40.380 INFO      SQLSelect        Interpreting SQLSelect id:db2Row statement: SELECT 
+	  EMP_NUM
+	, WAGE_TYPE
+	, FIRST_LAST_NAME
+	, HOURS
+	, RATE
+	, WAGES
+	, OVERTIME
+	, COMM
+ FROM HDDRXM0.KT_DEMOTAB2
+ WHERE     EMP_NUM = ${empNumber}
+15:32:40.380 INFO      SQLSelect        Using database from ExecutionContext:DSCCCWCC
+15:32:41.232 INFO      SQLSelect        Finished SQLSelect. Number of rows selected:0
+15:32:41.233 INFO      If               Interpreting If name:If not deleted
+15:32:41.276 INFO      If               If expression was evaluated to false. Child component(s) not executed
+15:32:41.277 INFO      If               Interpreting If name:If Deleted
+15:32:41.300 INFO      Verify           Interpreting Verify component name:Verify
+15:32:41.301 INFO      Verify           Using verify expression:db2Row.Row == null
+15:32:41.321 INFO      If               IF completed
+15:32:41.321 INFO      IterateData      IterateData completed
+15:32:41.321 INFO      Engine           Test Scenario execution ended

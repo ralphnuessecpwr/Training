@@ -1,0 +1,46 @@
+14:36:17.882 INFO      TOPAZ            ***************************************
+14:36:17.883 INFO      TOPAZ            ** Execution from Topaz with options **
+14:36:17.883 INFO      TOPAZ            ***************************************
+14:36:17.883 INFO      TOPAZ            Using repository: true
+14:36:17.883 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+14:36:17.883 INFO      TOPAZ            ***************************************
+14:36:17.883 INFO      Engine           Test Scenario execution started
+14:36:17.883 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b5f2a71787be73b59238d7b
+  Environment type              : Cics
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 600
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+14:36:17.884 INFO      Engine           Setting variables from context and context data extensions
+14:36:17.884 INFO      Engine             id: environmentId      value: 5b5f2a71787be73b59238d7b
+14:36:17.884 INFO      Engine             id: environmentType    value: CICS
+14:36:17.884 INFO      Engine             id: userId             value: HDDRXM0
+14:36:17.884 INFO      Engine             id: accountingInfo     value: 
+14:36:17.885 INFO      Component        Interpreting Component: LGICUS01 program:LGICUS01
+14:36:17.885 INFO      Component        Component will be executed in CICS and top level element definitions are:
+14:36:17.885 INFO      Component          Element: dfhcommarea Area type:DEFAULT
+14:36:17.887 INFO      CWCC CICS        Sending Module execution request to Host for module:LGICUS01 rollback:false
+14:36:18.075 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/a3bffcc2860e4a47970fc36b00889c96
+14:36:19.630 INFO      HCIClient        Job has been started at host with JobId:J0195372
+14:36:20.561 INFO      CWCC CICS        Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0C(J0195372) ended with return code: 0000
+  Job name       : HDDRXM0C
+  Job id         : J0195372
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+14:36:20.943 INFO      CWCC CICS        Component completed with program exit: +0
+14:36:21.326 INFO      Component        Verifying program exit code: 0 against verify expression: value < 8
+14:36:21.344 INFO      Component        Program exit code was verified to be accepted by the expression: value < 8
+14:36:21.344 INFO      Component        Finished interpreting Component: LGICUS01 program:LGICUS01
+14:36:21.345 INFO      Engine           Test Scenario execution ended

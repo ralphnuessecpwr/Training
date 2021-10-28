@@ -1,0 +1,151 @@
+10:17:09.540 INFO      TOPAZ            ***************************************
+10:17:09.540 INFO      TOPAZ            ** Execution from Topaz with options **
+10:17:09.540 INFO      TOPAZ            ***************************************
+10:17:09.541 INFO      TOPAZ            Using repository: true
+10:17:09.541 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+10:17:09.541 INFO      TOPAZ            ***************************************
+10:17:09.541 INFO      Engine           Test Scenario execution started
+10:17:09.541 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+10:17:09.542 INFO      Engine           Setting variables from context and context data extensions
+10:17:09.542 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+10:17:09.542 INFO      Engine             id: environmentType    value: BATCH
+10:17:09.542 INFO      Engine             id: userId             value: HDDRXM0
+10:17:09.543 INFO      Engine             id: accountingInfo     value: 
+10:17:09.543 INFO      Variable         Interpreting Variable id:userid
+10:17:09.544 INFO      Variable         Interpreting Variable id:datasetQualifier
+10:17:09.544 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+10:17:09.544 INFO      Variable         Interpreting Variable id:empInDatasetName
+10:17:09.544 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+10:17:09.545 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+10:17:09.545 INFO      Job              Interpreting JOB: Prepare Input Dataset
+10:17:09.545 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:17:09.546 INFO      CWCC Batch       Sending Job execution request to Host 
+10:17:10.126 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0186620) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0186620
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:17:10.127 INFO      Job              Successfully executed job: Prepare Input Dataset
+10:17:10.128 INFO      Job              Interpreting JOB: Run Test
+10:17:10.128 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:17:10.128 INFO      CWCC Batch       Sending Job execution request to Host 
+10:17:10.821 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0186621) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0186621
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:17:10.824 INFO      Job              Successfully executed job: Run Test
+10:17:10.825 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+10:17:10.857 INFO      ReadRemoteFile   Interpreting ReadRemoteFile for fileName: ${outDatasetNameActual} first record:1 number of records to read: 100
+10:17:10.857 INFO      ReadRemoteFile     Variable substitution found in file name
+10:17:10.857 INFO      ReadRemoteFile     File name is now:HDDRXM0.TRAIN.LBP.CWXTRPT
+10:17:10.857 INFO      ReadRemoteFile   Sending Read dataset request to Host 
+10:17:11.043 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/61905cf493dd407cbe861cd5991e73a9
+10:17:12.625 INFO      HCIClient        Job has been started at host with JobId:J0186622
+10:17:13.561 INFO      CWCC Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0I(J0186622) ended with return code: 0000
+  Job name       : HDDRXM0I
+  Job id         : J0186622
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:17:14.347 INFO      ReadRemoteFile   Records received, count= 24
+10:17:14.348 INFO      ReadRemoteFile   The records can be refered to as an array through rptFileRecords.record[<index>]
+10:17:14.348 INFO      IterateData      Interpreting IterateData id: iterate. Number of data iterations: 24. Variable iterateIndex contains iteration number
+10:17:14.349 INFO      IterateData      Iteration number 0 started.
+10:17:14.349 INFO      If               Interpreting If name:Check for Total record
+10:17:14.421 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.422 INFO      IterateData      Iteration number 1 started.
+10:17:14.422 INFO      If               Interpreting If name:Check for Total record
+10:17:14.487 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.487 INFO      IterateData      Iteration number 2 started.
+10:17:14.487 INFO      If               Interpreting If name:Check for Total record
+10:17:14.541 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.541 INFO      IterateData      Iteration number 3 started.
+10:17:14.542 INFO      If               Interpreting If name:Check for Total record
+10:17:14.590 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.590 INFO      IterateData      Iteration number 4 started.
+10:17:14.590 INFO      If               Interpreting If name:Check for Total record
+10:17:14.636 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.636 INFO      IterateData      Iteration number 5 started.
+10:17:14.636 INFO      If               Interpreting If name:Check for Total record
+10:17:14.666 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.666 INFO      IterateData      Iteration number 6 started.
+10:17:14.667 INFO      If               Interpreting If name:Check for Total record
+10:17:14.706 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.707 INFO      IterateData      Iteration number 7 started.
+10:17:14.707 INFO      If               Interpreting If name:Check for Total record
+10:17:14.745 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.746 INFO      IterateData      Iteration number 8 started.
+10:17:14.746 INFO      If               Interpreting If name:Check for Total record
+10:17:14.785 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.786 INFO      IterateData      Iteration number 9 started.
+10:17:14.786 INFO      If               Interpreting If name:Check for Total record
+10:17:14.819 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.819 INFO      IterateData      Iteration number 10 started.
+10:17:14.820 INFO      If               Interpreting If name:Check for Total record
+10:17:14.854 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.854 INFO      IterateData      Iteration number 11 started.
+10:17:14.854 INFO      If               Interpreting If name:Check for Total record
+10:17:14.896 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.896 INFO      IterateData      Iteration number 12 started.
+10:17:14.896 INFO      If               Interpreting If name:Check for Total record
+10:17:14.941 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.942 INFO      IterateData      Iteration number 13 started.
+10:17:14.942 INFO      If               Interpreting If name:Check for Total record
+10:17:14.984 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:14.984 INFO      IterateData      Iteration number 14 started.
+10:17:14.985 INFO      If               Interpreting If name:Check for Total record
+10:17:15.019 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.019 INFO      IterateData      Iteration number 15 started.
+10:17:15.020 INFO      If               Interpreting If name:Check for Total record
+10:17:15.058 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.058 INFO      IterateData      Iteration number 16 started.
+10:17:15.058 INFO      If               Interpreting If name:Check for Total record
+10:17:15.089 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.089 INFO      IterateData      Iteration number 17 started.
+10:17:15.089 INFO      If               Interpreting If name:Check for Total record
+10:17:15.122 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.122 INFO      IterateData      Iteration number 18 started.
+10:17:15.122 INFO      If               Interpreting If name:Check for Total record
+10:17:15.156 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.157 INFO      IterateData      Iteration number 19 started.
+10:17:15.157 INFO      If               Interpreting If name:Check for Total record
+10:17:15.200 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.201 INFO      IterateData      Iteration number 20 started.
+10:17:15.201 INFO      If               Interpreting If name:Check for Total record
+10:17:15.239 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.239 INFO      IterateData      Iteration number 21 started.
+10:17:15.239 INFO      If               Interpreting If name:Check for Total record
+10:17:15.272 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.272 INFO      IterateData      Iteration number 22 started.
+10:17:15.272 INFO      If               Interpreting If name:Check for Total record
+10:17:15.301 INFO      If               If expression was evaluated to false. Child component(s) not executed
+10:17:15.302 INFO      IterateData      Iteration number 23 started.
+10:17:15.302 INFO      If               Interpreting If name:Check for Total record
+10:17:15.337 INFO      Verify           Interpreting Verify component name:Verify Total Amount
+10:17:15.369 INFO      Verify           Expected and Actual data was found to be identical
+10:17:15.369 INFO      If               IF completed
+10:17:15.369 INFO      IterateData      IterateData completed
+10:17:15.369 INFO      Engine           Test Scenario execution ended

@@ -1,0 +1,79 @@
+16:40:55.502 INFO      TOPAZ            ***************************************
+16:40:55.502 INFO      TOPAZ            ** Execution from Topaz with options **
+16:40:55.502 INFO      TOPAZ            ***************************************
+16:40:55.503 INFO      TOPAZ            Using repository: true
+16:40:55.503 INFO      TOPAZ            Repository URL: http://localhost:48226/totaltestapi/
+16:40:55.503 INFO      TOPAZ            ***************************************
+16:40:55.503 INFO      Engine           Test Scenario execution started
+16:40:55.503 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5e7a1936cf655a12a4d4df4f
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwc2.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+16:40:55.503 INFO      Engine           Setting variables from context and context data extensions
+16:40:55.503 INFO      Engine             id: environmentId      value: 5e7a1936cf655a12a4d4df4f
+16:40:55.503 INFO      Engine             id: environmentType    value: BATCH
+16:40:55.503 INFO      Engine             id: userId             value: HDDRXM0
+16:40:55.503 INFO      Engine             id: accountingInfo     value: 
+16:40:55.504 INFO      Variable         Interpreting Variable id:userid
+16:40:55.504 INFO      Variable         Interpreting Variable id:datasetQualifier
+16:40:55.504 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+16:40:55.505 INFO      Variable         Interpreting Variable id:empInDatasetName
+16:40:55.505 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+16:40:55.505 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+16:40:55.505 INFO      Job              Interpreting JOB: Prepare Input Dataset
+16:40:55.505 INFO      Job              Variable substitution found in Job JCL, now substituted
+16:40:55.505 INFO      CWC2 VT          Sending Job execution request to Host 
+16:40:56.118 INFO      CWC2 VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0194448) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0194448
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+16:40:56.119 INFO      Job              Successfully executed job: Prepare Input Dataset
+16:40:56.119 INFO      Job              Interpreting JOB: Run Test
+16:40:56.120 INFO      Job              Variable substitution found in Job JCL, now substituted
+16:40:56.120 INFO      CWC2 VT          Sending Job execution request to Host 
+16:40:56.812 INFO      CWC2 VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0194449) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0194449
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+16:40:56.812 INFO      Job              Successfully executed job: Run Test
+16:40:56.813 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+16:40:56.824 INFO      ReadRemoteFile   Interpreting ReadRemoteFile for fileName: ${outDatasetNameActual} first record:1 number of records to read: 100
+16:40:56.824 INFO      ReadRemoteFile     Variable substitution found in file name
+16:40:56.824 INFO      ReadRemoteFile     File name is now:HDDRXM0.TRAIN.LBP.CWXTRPT
+16:40:56.826 INFO      ReadRemoteFile   Sending Read dataset request to Host 
+16:40:57.022 INFO      HCIClient        Creating job directory /u/xatester/hddrxm0/65c79e2c164e42dbab2d14c43edabec6
+16:40:58.684 INFO      HCIClient        Job has been started at host with JobId:J0194450
+16:40:59.881 INFO      CWC2 VT          Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0I(J0194450) ended with return code: 0000
+  Job name       : HDDRXM0I
+  Job id         : J0194450
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+16:41:00.861 INFO      ReadRemoteFile   Records received, count= 24
+16:41:00.862 INFO      ReadRemoteFile   The records can be refered to as an array through rptFileRecords.record[<index>]
+16:41:00.863 INFO      Scope            Interpreting Scope name:Scope
+16:41:00.864 INFO      Verify           Interpreting Verify component name:Verify Total Amount
+16:41:00.937 INFO      Verify           Expected and Actual data was found to be identical
+16:41:00.937 INFO      Scope            Scope completed
+16:41:00.937 INFO      Engine           Test Scenario execution ended

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.7.2.v20210723-0450_131?>
+<!--Topaz for Total Test 20.7.2.v20210723-0450_131 Oct 6, 2021 11:55:01 AM-->
+<testsuites>
+  <testsuite name="SOAP" errors="0" tests="2" failures="0">
+    <testcase classname="SOAP" name="Soap Service" />
+    <testcase classname="SOAP" name="Soap Service" />
+  </testsuite>
+</testsuites>

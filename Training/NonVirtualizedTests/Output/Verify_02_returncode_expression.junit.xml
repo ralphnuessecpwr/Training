@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.7.2.v20210723-0450_131?>
+<!--Topaz for Total Test 20.7.2.v20210723-0450_131 Oct 5, 2021 10:01:08 AM-->
+<testsuites>
+  <testsuite name="Verify_02_returncode_expression" errors="0" tests="3" failures="1">
+    <testcase classname="Verify_02_returncode_expression" name="Job Submit: Prepare Input Dataset" />
+    <testcase classname="Verify_02_returncode_expression" name="Job Submit: Run Test" />
+    <testcase classname="Verify_02_returncode_expression" name="Verify: Verify Return Code">
+      <failure>The Verify expression was evaluated to false
+Expression:
+returncode == 0008</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.7.2.v20210723-0450_131?>
+<!--Topaz for Total Test 20.7.2.v20210723-0450_131 Oct 6, 2021 12:04:17 PM-->
+<testsuites>
+  <testsuite name="Combined" errors="0" tests="5" failures="1">
+    <testcase classname="Combined" name="Job Submit: Prepare Input Dataset" />
+    <testcase classname="Combined" name="Job Submit: Set Date" />
+    <testcase classname="Combined" name="Job Submit: Job" />
+    <testcase classname="Combined" name="File-AID Compare">
+      <failure>File-AID compare returned record changed
+Â»&#xD;
+ï¿½FILE-AID 17.2   COMPARE DETAIL REPORT              USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1&#xD;
+ï¿½"OLD" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG                    "NEW" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½CHANGED RECORD       "OLD" FILE RECORD:        22                |                     "NEW" FILE RECORD:        22&#xD;
+ï¿½ NUM DATA-FIELD-NAME               FORMAT   FIELD VALUES         | NUM DATA-FIELD-NAME               FORMAT   FIELD VALUES&#xD;
+ï¿½---- ---------------------------- -------- --------------------  |---- ---------------------------- -------- --------------------&#xD;
+ï¿½   1 EMPLOYEE-DTL                                                |   1 EMPLOYEE-DTL&#xD;
+ï¿½                                                                 |&#xD;
+ï¿½&gt;&gt;&gt; COMPARED FIELDS -    -    -    -    -    -    -    -    -    |    -    -    -    -    -    -    -    -    - COMPARED FIELDS &lt;&lt;&lt;&#xD;
+ï¿½                                                                 |&#xD;
+ï¿½   3 EMP-DTL-NAME                 C     15 MARK JOHNSON          |   3 EMP-DTL-NAME                 C     15&#xD;
+ï¿½  15 EMP-DTL-YRS-OF-SERVICE       Z   2    38                    |  15 EMP-DTL-YRS-OF-SERVICE       Z   2    39&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½&#xD;
+ï¿½&#xD;
+ï¿½                                                **** E N D   O F   R E P O R T ****&#xD;
+Â»&#xD;
+ï¿½FILE-AID 17.2   COMPARE CRITERIA CONTENTS REPORT   USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1&#xD;
+ï¿½ COMPARE CRITERIA DSN: SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB)&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½    COMPARE CRITERIA CONTENTS:&#xD;
+ï¿½    RECORD COMPARE CRITERIA:&#xD;
+ï¿½            COMPARE TYPE:                                 READ-AHEAD&#xD;
+ï¿½            MAX NUMBER OF RECORDS TO READ-AHEAD:      100&#xD;
+ï¿½            READ-AHEAD SEQUENCE:                          ENFORCE&#xD;
+ï¿½            MAX NUMBER OF RECORDS TO COMPARE:           0  (0 = NO LIMIT)&#xD;
+ï¿½            MAX NUMBER OF DIFFERENCES TO COMPARE:       0  (0 = NO LIMIT)&#xD;
+ï¿½&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD&#xD;
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD&#xD;
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----&#xD;
+ï¿½   1 EMPLOYEE-DTL                        1 GRP   80              |   1 EMPLOYEE-DTL                        1 GRP   80&#xD;
+ï¿½   2 FILLER                              1 C      1 COMPARE     2|   2 FILLER                              1 C      1 COMPARE     2&#xD;
+ï¿½   3 EMP-DTL-NAME                        2 C     15 SYNCKEY     3|   3 EMP-DTL-NAME                        2 C     15 SYNCKEY     3&#xD;
+ï¿½   4 FILLER                             17 C      1 COMPARE     4|   4 FILLER                             17 C      1 COMPARE     4&#xD;
+ï¿½   5 EMP-DTL-REGION                     18 C      5 COMPARE     5|   5 EMP-DTL-REGION                     18 C      5 COMPARE     5&#xD;
+ï¿½   6 FILLER                             23 C      3 COMPARE     6|   6 FILLER                             23 C      3 COMPARE     6&#xD;
+ï¿½   7 EMP-DTL-TYPE                       26 C      1 COMPARE     7|   7 EMP-DTL-TYPE                       26 C      1 COMPARE     7&#xD;
+ï¿½   8 FILLER                             27 C      3 COMPARE     8|   8 FILLER                             27 C      3 COMPARE     8&#xD;
+ï¿½   9 EMP-DTL-HIRE-MM                    30 Z   2    COMPARE     9|   9 EMP-DTL-HIRE-MM                    30 Z   2    COMPARE     9&#xD;
+ï¿½  10 EMP-DTL-SLASH1                     32 C      1 COMPARE    10|  10 EMP-DTL-SLASH1                     32 C      1 COMPARE    10&#xD;
+ï¿½  11 EMP-DTL-HIRE-DD                    33 Z   2    COMPARE    11|  11 EMP-DTL-HIRE-DD                    33 Z   2    COMPARE    11&#xD;
+ï¿½  12 EMP-DTL-SLASH2                     35 C      1 COMPARE    12|  12 EMP-DTL-SLASH2                     35 C      1 COMPARE    12&#xD;
+ï¿½  13 EMP-DTL-HIRE-YY                    36 Z   2    COMPARE    13|  13 EMP-DTL-HIRE-YY                    36 Z   2    COMPARE    13&#xD;
+ï¿½  14 FILLER                             38 C      3 COMPARE    14|  14 FILLER                             38 C      3 COMPARE    14&#xD;
+ï¿½  15 EMP-DTL-YRS-OF-SERVICE             41 Z   2    COMPARE    15|  15 EMP-DTL-YRS-OF-SERVICE             41 Z   2    COMPARE    15&#xD;
+ï¿½  16 FILLER                             43 C      2 COMPARE    16|  16 FILLER                             43 C      2 COMPARE    16&#xD;
+ï¿½  17 EMP-DTL-WAGES                      45 C      8 COMPARE    17|  17 EMP-DTL-WAGES                      45 C      8 COMPARE    17&#xD;
+ï¿½  18 FILLER                             53 C      1 COMPARE    18|  18 FILLER                             53 C      1 COMPARE    18&#xD;
+ï¿½  19 EMP-DTL-OT                         54 C      8 COMPARE    19|  19 EMP-DTL-OT                         54 C      8 COMPARE    19&#xD;
+ï¿½  20 FILLER                             62 C      2 COMPARE    20|  20 FILLER                             62 C      2 COMPARE    20&#xD;
+ï¿½  21 EMP-DTL-COMM                       64 C      8 COMPARE    21|  21 EMP-DTL-COMM                       64 C      8 COMPARE    21&#xD;
+ï¿½  22 FILLER                             72 C      1 COMPARE    22|  22 FILLER                             72 C      1 COMPARE    22&#xD;
+ï¿½  23 EMP-DTL-TOTAL                      73 C      8 COMPARE    23|  23 EMP-DTL-TOTAL                      73 C      8 COMPARE    23&#xD;
+ï¿½     END OF LAYOUT. LENGTH = 80                                  |     END OF LAYOUT. LENGTH = 80&#xD;
+ï¿½&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD&#xD;
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD&#xD;
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----&#xD;
+ï¿½   1 REGION-DETAIL                       1 GRP   78              |   1 REGION-DETAIL                       1 GRP   78&#xD;
+ï¿½   2 FILLER                              1 C      1 COMPARE     2|   2 FILLER                              1 C      1 COMPARE     2&#xD;
+ï¿½   3 REG-DTL-MANAGER                     2 C     15 SYNCKEY     3|   3 REG-DTL-MANAGER                     2 C     15 SYNCKEY     3&#xD;
+ï¿½   4 FILLER                             17 C      1 COMPARE     4|   4 FILLER                             17 C      1 COMPARE     4&#xD;
+ï¿½   5 REG-DTL-REGION                     18 C      5 COMPARE     5|   5 REG-DTL-REGION                     18 C      5 COMPARE     5&#xD;
+ï¿½   6 FILLER                             23 C      5 COMPARE     6|   6 FILLER                             23 C      5 COMPARE     6&#xD;
+ï¿½   7 REG-DTL-SALES                      28 C      9 COMPARE     7|   7 REG-DTL-SALES                      28 C      9 COMPARE     7&#xD;
+ï¿½   8 FILLER                             37 C      5 COMPARE     8|   8 FILLER                             37 C      5 COMPARE     8&#xD;
+ï¿½   9 REG-DTL-SALARY                     42 C      7 COMPARE     9|   9 REG-DTL-SALARY                     42 C      7 COMPARE     9&#xD;
+ï¿½  10 FILLER                             49 C      5 COMPARE    10|  10 FILLER                             49 C      5 COMPARE    10&#xD;
+ï¿½  11 REG-DTL-COMM                       54 C      8 COMPARE    11|  11 REG-DTL-COMM                       54 C      8 COMPARE    11&#xD;
+Â»&#xD;
+ï¿½FILE-AID 17.2   COMPARE CRITERIA CONTENTS REPORT   USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         2&#xD;
+ï¿½ COMPARE CRITERIA DSN: SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB)&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD&#xD;
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD&#xD;
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----&#xD;
+ï¿½  12 FILLER                             62 C      3 COMPARE    12|  12 FILLER                             62 C      3 COMPARE    12&#xD;
+ï¿½  13 REG-DTL-TOTAL                      65 C      8 COMPARE    13|  13 REG-DTL-TOTAL                      65 C      8 COMPARE    13&#xD;
+ï¿½  14 FILLER                             73 C      1 COMPARE    14|  14 FILLER                             73 C      1 COMPARE    14&#xD;
+ï¿½  15 REG-DTL-COMMENT                    74 C      5 COMPARE    15|  15 REG-DTL-COMMENT                    74 C      5 COMPARE    15&#xD;
+ï¿½     END OF LAYOUT. LENGTH = 78                                  |     END OF LAYOUT. LENGTH = 78&#xD;
+ï¿½&#xD;
+ï¿½                                                ****  E N D  O F  R E P O R T  ****&#xD;
+Â»&#xD;
+ï¿½FILE-AID 17.2   COMPARE SUMMARY REPORT             USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1&#xD;
+ï¿½"OLD" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG                    "NEW" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT&#xD;
+ï¿½===================================================================================================================================&#xD;
+ï¿½    COMPARE CRITERIA:&#xD;
+ï¿½            COMPARE MODE:                               FORMATTED&#xD;
+ï¿½            COBOL LAYOUT USAGE:                         XREF&#xD;
+ï¿½            COBOL DATASET NAME:                         SALESSUP.GITDEMO1.FA.LAYOUTS&#xD;
+ï¿½            XREF DATASET NAME:                          SALESSUP.GITDEMO1.FA.XREF(RPTFILE)&#xD;
+ï¿½&#xD;
+ï¿½    REPORT FORMAT PARAMETERS:&#xD;
+ï¿½            PRINT FORMAT:                               FORMATTED&#xD;
+ï¿½            MAX NUMBER OF DIFFERENCES TO REPORT:        0  (0 = NO LIMIT)&#xD;
+ï¿½            PRINT RECORDS SELECTED:                     CHANGED, INSERTED, DELETED&#xD;
+ï¿½            FORMATTED REPORT OPTION:                    COMPARED FIELDS ONLY&#xD;
+ï¿½            COMPARED FIELDS OPTION:                     CHANGED ONLY&#xD;
+ï¿½            FIELD STATISTICS REPORT:                    NO&#xD;
+ï¿½&#xD;
+ï¿½    COMPARE STATISTICS:&#xD;
+ï¿½            "OLD" DATASET RECORDS READ:                24&#xD;
+ï¿½            "NEW" DATASET RECORDS READ:                24&#xD;
+ï¿½            "OLD" DATASET RECORDS COMPARED:            13&#xD;
+ï¿½            "NEW" DATASET RECORDS COMPARED:            13&#xD;
+ï¿½            NUMBER OF RECORDS MATCHED:                 12&#xD;
+ï¿½            NUMBER OF RECORDS CHANGED:                  1&#xD;
+ï¿½            NUMBER OF RECORDS INSERTED:                 0&#xD;
+ï¿½            NUMBER OF RECORDS DELETED:                  0&#xD;
+ï¿½&#xD;
+ï¿½                                                ****  E N D  O F  R E P O R T  ****</failure>
+    </testcase>
+    <testcase classname="Combined" name="Job Submit: Remove Date" />
+  </testsuite>
+</testsuites>

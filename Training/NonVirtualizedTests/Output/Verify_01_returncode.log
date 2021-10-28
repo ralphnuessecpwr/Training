@@ -1,0 +1,64 @@
+10:01:56.207 INFO      TOPAZ            ***************************************
+10:01:56.207 INFO      TOPAZ            ** Execution from Topaz with options **
+10:01:56.208 INFO      TOPAZ            ***************************************
+10:01:56.208 INFO      TOPAZ            Using repository: true
+10:01:56.208 INFO      TOPAZ            Repository URL: http://cwcc.compuware.com:2020/totaltestapi/
+10:01:56.209 INFO      TOPAZ            ***************************************
+10:01:56.210 INFO      Engine           Test Scenario execution started
+10:01:56.210 INFO      Engine           Using context settings:
+  Engine Version                : 20.7
+  Environment id                : 5b5089c9787be73b59238d35
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwc2.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : false
+10:01:56.211 INFO      Engine           Setting variables from context and context data extensions
+10:01:56.211 INFO      Engine             id: environmentId      value: 5b5089c9787be73b59238d35
+10:01:56.211 INFO      Engine             id: environmentType    value: BATCH
+10:01:56.212 INFO      Engine             id: userId             value: HDDRXM0
+10:01:56.212 INFO      Engine             id: accountingInfo     value: 
+10:01:56.213 INFO      Variable         Interpreting Variable id:userid
+10:01:56.213 INFO      Variable         Interpreting Variable id:datasetQualifier
+10:01:56.213 INFO      Variable         Interpreting Variable id:empMasterDatasetName
+10:01:56.214 INFO      Variable         Interpreting Variable id:empInDatasetName
+10:01:56.214 INFO      Variable         Interpreting Variable id:outDatasetNameActual
+10:01:56.214 INFO      Variable         Interpreting Variable id:outDatasetNameExpected
+10:01:56.214 INFO      Job              Interpreting JOB: Prepare Input Dataset
+10:01:56.214 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:01:56.214 INFO      CWC2 Batch       Sending Job execution request to Host 
+10:01:56.795 INFO      CWC2 Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0F(J0190919) ended with return code: 0000
+  Job name       : HDDRXM0F
+  Job id         : J0190919
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:01:56.796 INFO      Job              Successfully executed job: Prepare Input Dataset
+10:01:56.796 INFO      SpoolFile        Interpreting SpoolFile element
+10:01:56.796 INFO      SpoolFile        Interpreting SpoolFile with jobId: J0190919 jobNameHDDRXM0F DD name: SYSPRINT step name: FASTEP
+10:01:57.198 INFO      Job              Interpreting JOB: Run Test
+10:01:57.198 INFO      Job              Variable substitution found in Job JCL, now substituted
+10:01:57.198 INFO      CWC2 Batch       Sending Job execution request to Host 
+10:01:57.793 INFO      CWC2 Batch       Job execution completed with status:
+  Job status     : COMPLETED
+  Job status msg : Job HDDRXM0T(J0190920) ended with return code: 0000
+  Job name       : HDDRXM0T
+  Job id         : J0190920
+  Return code    : 0000
+  Abend code     : 
+  Abend reason   : 
+10:01:57.794 INFO      Job              Successfully executed job: Run Test
+10:01:57.794 INFO      Component        Verifying job return code: 0000 against verify expression: value < 8
+10:01:57.800 INFO      Verify           Interpreting Verify component name:Verify "ReturnCode"
+10:01:57.816 WARNING   Verify           Expected and Actual data are NOT equal
+10:01:57.817 WARNING   Verify           Values are not equal. Actual:0000 Expected:0008
+10:01:57.817 INFO      Engine           Test Scenario execution ended

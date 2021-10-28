@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaUnitResult resultType="VERIFICATION_ERROR" containsSimulation="false">
+  <ExecutionId>33eed629-5dfc-4e2e-812a-95cc79fd2df3</ExecutionId>
+  <Message />
+  <AST>
+    <XaUnit xmlns="http://www.xact.dk/xatester/v/1" xmlns:data="http://www.xact.dk/xatester/data/v/1" caseInsensitiveCompare="false">
+      <Test>
+        <SubScript filePath="FileAidCopy.scenario">
+          <XaUnit caseInsensitiveCompare="false">
+            <Test>
+              <Job name="Prepare Input Dataset" haltExecution="false" jobLocation="JOBDEFINITION" resultReturnCode="0000">
+                <Content><![CDATA[//HDDRXM0F JOB (''),'TTT FA COPY',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//FASTEP   EXEC PGM=FILEAID,REGION=08M
+//STEPLIB  DD DISP=SHR,DSN=SYS2.CW.VJ.#CWCC.CXVJLOAD
+//         DD DISP=SHR,DSN=SYS2.CW.&CWGAVJ..SXVJLOAD           
+//SYSPRINT DD  SYSOUT=*                                      
+//SYSLIST  DD  SYSOUT=*                                      
+//DD01     DD  DSN=HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER,   
+//             DISP=SHR                                      
+//DD01O    DD  DSN=HDDRXM0.TRAIN.LBP.CWXTDATA,              
+//             DISP=OLD                                      
+//SYSIN    DD  *                                             
+$$DD01 COPY PADCHAR=X'00'                                    
+/*                                                           
+//]]></Content>
+              </Job>
+            </Test>
+          </XaUnit>
+        </SubScript>
+        <SubScript filePath="XchangeSet.scenario">
+          <XaUnit caseInsensitiveCompare="false">
+            <Test>
+              <Job name="Set Date" haltExecution="false" jobLocation="JOBDEFINITION" resultReturnCode="0000">
+                <Content><![CDATA[//HDDRXM0G JOB (''),'TTT XG SET',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//XGSETREQ EXEC PGM=XGSETREQ,REGION=08M
+//STEPLIB  DD   DSN=SYS2.CW.&CWGAXG..SLXGLOAD,DISP=SHR
+//SYSPRINT DD  SYSOUT=*                                      
+//XGOUTBDT DD  SYSOUT=*                                      
+//XGOUTBOF DD  SYSOUT=*                                      
+//XGOUTCDT DD  SYSOUT=*                                      
+//XGOUTCOF DD  SYSOUT=*                                      
+//XGOUTJDT DD  SYSOUT=*                                      
+//XGOUTJOF DD  SYSOUT=*                                      
+//XGOUTDDF DD  SYSOUT=*                                      
+//XGOUTCPD DD  SYSOUT=*                                      
+//XGOUTCPO DD  SYSOUT=* 
+//XGOUTEXE DD  SYSOUT=* 
+//XGINPREQ DD *
+ SSID=MXG1
+ TYPE=BATCH
+ FORMAT=DATETIME
+ H HDDRXM0T CWXTCOB  *        *        N 2019/12/31
+//*]]></Content>
+              </Job>
+            </Test>
+          </XaUnit>
+        </SubScript>
+        <Job name="Job" haltExecution="false" jobLocation="JOBDEFINITION" returnCodeVerify="value &lt; 8" resultReturnCode="0000">
+          <Content><![CDATA[//HDDRXM0T JOB ('EUDD,INTL'),'NUESSE',NOTIFY=&SYSUID, 
+//             MSGLEVEL=(1,1),MSGCLASS=X,CLASS=A,REGION=6M 
+/*JOBPARM S=* 
+//* 
+//*   EXECUTE CWXTCOB IN BATCH 
+//* 
+//STEP1  EXEC PGM=CWXTCOB,PARM=00003 
+//STEPLIB DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE 
+//XPSL0004 DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE.SSD 
+//EMPFILE  DD  DISP=SHR,DSN=HDDRXM0.TRAIN.LBP.CWXTDATA 
+//RPTFILE  DD  DISP=SHR,DSN=HDDRXM0.TRAIN.LBP.CWXTRPT 
+//SYSOUT   DD  SYSOUT=*]]></Content>
+        </Job>
+        <SubScript filePath="FileAidCompare.scenario">
+          <XaUnit caseInsensitiveCompare="false">
+            <Test>
+              <FileAIDCompare label="Compare" result="VERIFICATION_ERROR" checkChanged="true" checkInserted="true" checkDeleted="true">
+                <JCL><![CDATA[//HDDRXM0F JOB (''),'TTT FA COMP',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//FASTEP   EXEC PGM=FILEAID,REGION=08M
+//STEPLIB  DD DISP=SHR,DSN=SYS2.CW.VJR17Y.CXVJLOAD
+//         DD DISP=SHR,DSN=SYS2.CW.VJR17Y.SXVJLOAD
+//SYSPRINT DD  SYSOUT=*
+//SYSLIST  DD  SYSOUT=*
+//DD01     DD  DSN=HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG,
+//             DISP=SHR
+//DD01C    DD  DSN=HDDRXM0.TRAIN.LBP.CWXTRPT,
+//             DISP=SHR
+//DD01CP   DD  DSN=SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB),
+//             DISP=SHR                              
+//DD01RL   DD  DSN=SALESSUP.GITDEMO1.FA.LAYOUTS,
+//             DISP=SHR
+//DD01XR   DD  DSN=SALESSUP.GITDEMO1.FA.XREF(RPTFILE),
+//             DISP=SHR
+//SYSIN    DD  *
+$$DD01 COMPARE
+/*]]></JCL>
+                <ResultReport><![CDATA[Â»
+ï¿½FILE-AID 17.2   COMPARE DETAIL REPORT              USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1
+ï¿½"OLD" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG                    "NEW" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT
+ï¿½===================================================================================================================================
+ï¿½CHANGED RECORD       "OLD" FILE RECORD:        22                |                     "NEW" FILE RECORD:        22
+ï¿½ NUM DATA-FIELD-NAME               FORMAT   FIELD VALUES         | NUM DATA-FIELD-NAME               FORMAT   FIELD VALUES
+ï¿½---- ---------------------------- -------- --------------------  |---- ---------------------------- -------- --------------------
+ï¿½   1 EMPLOYEE-DTL                                                |   1 EMPLOYEE-DTL
+ï¿½                                                                 |
+ï¿½>>> COMPARED FIELDS -    -    -    -    -    -    -    -    -    |    -    -    -    -    -    -    -    -    - COMPARED FIELDS <<<
+ï¿½                                                                 |
+ï¿½   3 EMP-DTL-NAME                 C     15 MARK JOHNSON          |   3 EMP-DTL-NAME                 C     15
+ï¿½  15 EMP-DTL-YRS-OF-SERVICE       Z   2    38                    |  15 EMP-DTL-YRS-OF-SERVICE       Z   2    39
+ï¿½===================================================================================================================================
+ï¿½
+ï¿½
+ï¿½                                                **** E N D   O F   R E P O R T ****
+Â»
+ï¿½FILE-AID 17.2   COMPARE CRITERIA CONTENTS REPORT   USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1
+ï¿½ COMPARE CRITERIA DSN: SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB)
+ï¿½===================================================================================================================================
+ï¿½    COMPARE CRITERIA CONTENTS:
+ï¿½    RECORD COMPARE CRITERIA:
+ï¿½            COMPARE TYPE:                                 READ-AHEAD
+ï¿½            MAX NUMBER OF RECORDS TO READ-AHEAD:      100
+ï¿½            READ-AHEAD SEQUENCE:                          ENFORCE
+ï¿½            MAX NUMBER OF RECORDS TO COMPARE:           0  (0 = NO LIMIT)
+ï¿½            MAX NUMBER OF DIFFERENCES TO COMPARE:       0  (0 = NO LIMIT)
+ï¿½
+ï¿½===================================================================================================================================
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----
+ï¿½   1 EMPLOYEE-DTL                        1 GRP   80              |   1 EMPLOYEE-DTL                        1 GRP   80
+ï¿½   2 FILLER                              1 C      1 COMPARE     2|   2 FILLER                              1 C      1 COMPARE     2
+ï¿½   3 EMP-DTL-NAME                        2 C     15 SYNCKEY     3|   3 EMP-DTL-NAME                        2 C     15 SYNCKEY     3
+ï¿½   4 FILLER                             17 C      1 COMPARE     4|   4 FILLER                             17 C      1 COMPARE     4
+ï¿½   5 EMP-DTL-REGION                     18 C      5 COMPARE     5|   5 EMP-DTL-REGION                     18 C      5 COMPARE     5
+ï¿½   6 FILLER                             23 C      3 COMPARE     6|   6 FILLER                             23 C      3 COMPARE     6
+ï¿½   7 EMP-DTL-TYPE                       26 C      1 COMPARE     7|   7 EMP-DTL-TYPE                       26 C      1 COMPARE     7
+ï¿½   8 FILLER                             27 C      3 COMPARE     8|   8 FILLER                             27 C      3 COMPARE     8
+ï¿½   9 EMP-DTL-HIRE-MM                    30 Z   2    COMPARE     9|   9 EMP-DTL-HIRE-MM                    30 Z   2    COMPARE     9
+ï¿½  10 EMP-DTL-SLASH1                     32 C      1 COMPARE    10|  10 EMP-DTL-SLASH1                     32 C      1 COMPARE    10
+ï¿½  11 EMP-DTL-HIRE-DD                    33 Z   2    COMPARE    11|  11 EMP-DTL-HIRE-DD                    33 Z   2    COMPARE    11
+ï¿½  12 EMP-DTL-SLASH2                     35 C      1 COMPARE    12|  12 EMP-DTL-SLASH2                     35 C      1 COMPARE    12
+ï¿½  13 EMP-DTL-HIRE-YY                    36 Z   2    COMPARE    13|  13 EMP-DTL-HIRE-YY                    36 Z   2    COMPARE    13
+ï¿½  14 FILLER                             38 C      3 COMPARE    14|  14 FILLER                             38 C      3 COMPARE    14
+ï¿½  15 EMP-DTL-YRS-OF-SERVICE             41 Z   2    COMPARE    15|  15 EMP-DTL-YRS-OF-SERVICE             41 Z   2    COMPARE    15
+ï¿½  16 FILLER                             43 C      2 COMPARE    16|  16 FILLER                             43 C      2 COMPARE    16
+ï¿½  17 EMP-DTL-WAGES                      45 C      8 COMPARE    17|  17 EMP-DTL-WAGES                      45 C      8 COMPARE    17
+ï¿½  18 FILLER                             53 C      1 COMPARE    18|  18 FILLER                             53 C      1 COMPARE    18
+ï¿½  19 EMP-DTL-OT                         54 C      8 COMPARE    19|  19 EMP-DTL-OT                         54 C      8 COMPARE    19
+ï¿½  20 FILLER                             62 C      2 COMPARE    20|  20 FILLER                             62 C      2 COMPARE    20
+ï¿½  21 EMP-DTL-COMM                       64 C      8 COMPARE    21|  21 EMP-DTL-COMM                       64 C      8 COMPARE    21
+ï¿½  22 FILLER                             72 C      1 COMPARE    22|  22 FILLER                             72 C      1 COMPARE    22
+ï¿½  23 EMP-DTL-TOTAL                      73 C      8 COMPARE    23|  23 EMP-DTL-TOTAL                      73 C      8 COMPARE    23
+ï¿½     END OF LAYOUT. LENGTH = 80                                  |     END OF LAYOUT. LENGTH = 80
+ï¿½
+ï¿½===================================================================================================================================
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----
+ï¿½   1 REGION-DETAIL                       1 GRP   78              |   1 REGION-DETAIL                       1 GRP   78
+ï¿½   2 FILLER                              1 C      1 COMPARE     2|   2 FILLER                              1 C      1 COMPARE     2
+ï¿½   3 REG-DTL-MANAGER                     2 C     15 SYNCKEY     3|   3 REG-DTL-MANAGER                     2 C     15 SYNCKEY     3
+ï¿½   4 FILLER                             17 C      1 COMPARE     4|   4 FILLER                             17 C      1 COMPARE     4
+ï¿½   5 REG-DTL-REGION                     18 C      5 COMPARE     5|   5 REG-DTL-REGION                     18 C      5 COMPARE     5
+ï¿½   6 FILLER                             23 C      5 COMPARE     6|   6 FILLER                             23 C      5 COMPARE     6
+ï¿½   7 REG-DTL-SALES                      28 C      9 COMPARE     7|   7 REG-DTL-SALES                      28 C      9 COMPARE     7
+ï¿½   8 FILLER                             37 C      5 COMPARE     8|   8 FILLER                             37 C      5 COMPARE     8
+ï¿½   9 REG-DTL-SALARY                     42 C      7 COMPARE     9|   9 REG-DTL-SALARY                     42 C      7 COMPARE     9
+ï¿½  10 FILLER                             49 C      5 COMPARE    10|  10 FILLER                             49 C      5 COMPARE    10
+ï¿½  11 REG-DTL-COMM                       54 C      8 COMPARE    11|  11 REG-DTL-COMM                       54 C      8 COMPARE    11
+Â»
+ï¿½FILE-AID 17.2   COMPARE CRITERIA CONTENTS REPORT   USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         2
+ï¿½ COMPARE CRITERIA DSN: SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB)
+ï¿½===================================================================================================================================
+ï¿½===================================================================================================================================
+ï¿½     OLD LAYOUT MEMBER: RPTFILE                              NEW |     NEW LAYOUT MEMBER: RPTFILE                              OLD
+ï¿½ NUM OLD-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD| NUM NEW-RECORD-LAYOUT              START  FORMAT   STATUS  FIELD
+ï¿½---- ------------------------------ ------ -------- ------- -----|---- ------------------------------ ------ -------- ------- -----
+ï¿½  12 FILLER                             62 C      3 COMPARE    12|  12 FILLER                             62 C      3 COMPARE    12
+ï¿½  13 REG-DTL-TOTAL                      65 C      8 COMPARE    13|  13 REG-DTL-TOTAL                      65 C      8 COMPARE    13
+ï¿½  14 FILLER                             73 C      1 COMPARE    14|  14 FILLER                             73 C      1 COMPARE    14
+ï¿½  15 REG-DTL-COMMENT                    74 C      5 COMPARE    15|  15 REG-DTL-COMMENT                    74 C      5 COMPARE    15
+ï¿½     END OF LAYOUT. LENGTH = 78                                  |     END OF LAYOUT. LENGTH = 78
+ï¿½
+ï¿½                                                ****  E N D  O F  R E P O R T  ****
+Â»
+ï¿½FILE-AID 17.2   COMPARE SUMMARY REPORT             USERID-HDDRXM0F       DATE 06/10/2021        TIME 06:04:16        PAGE         1
+ï¿½"OLD" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG                    "NEW" DSN: HDDRXM0.TRAIN.LBP.CWXTRPT
+ï¿½===================================================================================================================================
+ï¿½    COMPARE CRITERIA:
+ï¿½            COMPARE MODE:                               FORMATTED
+ï¿½            COBOL LAYOUT USAGE:                         XREF
+ï¿½            COBOL DATASET NAME:                         SALESSUP.GITDEMO1.FA.LAYOUTS
+ï¿½            XREF DATASET NAME:                          SALESSUP.GITDEMO1.FA.XREF(RPTFILE)
+ï¿½
+ï¿½    REPORT FORMAT PARAMETERS:
+ï¿½            PRINT FORMAT:                               FORMATTED
+ï¿½            MAX NUMBER OF DIFFERENCES TO REPORT:        0  (0 = NO LIMIT)
+ï¿½            PRINT RECORDS SELECTED:                     CHANGED, INSERTED, DELETED
+ï¿½            FORMATTED REPORT OPTION:                    COMPARED FIELDS ONLY
+ï¿½            COMPARED FIELDS OPTION:                     CHANGED ONLY
+ï¿½            FIELD STATISTICS REPORT:                    NO
+ï¿½
+ï¿½    COMPARE STATISTICS:
+ï¿½            "OLD" DATASET RECORDS READ:                24
+ï¿½            "NEW" DATASET RECORDS READ:                24
+ï¿½            "OLD" DATASET RECORDS COMPARED:            13
+ï¿½            "NEW" DATASET RECORDS COMPARED:            13
+ï¿½            NUMBER OF RECORDS MATCHED:                 12
+ï¿½            NUMBER OF RECORDS CHANGED:                  1
+ï¿½            NUMBER OF RECORDS INSERTED:                 0
+ï¿½            NUMBER OF RECORDS DELETED:                  0
+ï¿½
+ï¿½                                                ****  E N D  O F  R E P O R T  ****]]></ResultReport>
+              </FileAIDCompare>
+            </Test>
+          </XaUnit>
+        </SubScript>
+        <SubScript filePath="XchangeDelete.scenario">
+          <XaUnit caseInsensitiveCompare="false">
+            <Test>
+              <Job name="Remove Date" haltExecution="false" jobLocation="JOBDEFINITION" resultReturnCode="0000">
+                <Content><![CDATA[//HDDRXM0G JOB (''),'TTT XG DEL',NOTIFY=&SYSUID,CLASS=A,        
+// REGION=0M,MSGCLASS=X                                                        
+/*JOBPARM S=*                                                                  
+//XGSETREQ EXEC PGM=XGSETREQ,REGION=08M                                         
+//STEPLIB  DD   DSN=SYS2.CW.&CWGAXG..SLXGLOAD,DISP=SHR                          
+//SYSPRINT DD  SYSOUT=*                                                         
+//XGOUTBDT DD  SYSOUT=*                                                        
+//XGOUTBOF DD  SYSOUT=*                                                        
+//XGOUTCDT DD  SYSOUT=*                                                        
+//XGOUTCOF DD  SYSOUT=*                                                        
+//XGOUTJDT DD  SYSOUT=*                                                        
+//XGOUTJOF DD  SYSOUT=*                                                        
+//XGOUTDDF DD  SYSOUT=*                                                        
+//XGOUTCPD DD  SYSOUT=*                                                        
+//XGOUTCPO DD  SYSOUT=* 
+//XGOUTEXE DD  SYSOUT=* 
+//XGINPREQ DD *                                                                
+ SSID=MXG1                                                                     
+ TYPE=BATCH                                                                    
+ FORMAT=DATETIME                                                               
+ D HDDRXM0T CWXTCOB  *        *        N 2019/12/31                            
+//*]]></Content>
+              </Job>
+            </Test>
+          </XaUnit>
+        </SubScript>
+      </Test>
+    </XaUnit>
+  </AST>
+  <Context>
+    <ExecutionContext xmlns="http://www.xact.dk/xatester/v/1" environment="5b508b8a787be73b59238d38" logLevel="INFO" remote="false" useSimulations="true" uploadResult="false" timeout="300" readTimeout="30" debuggerType="NONE" jobInfoInterval="3" userid="HDDRXM0">
+      <platformruntime callinterface="NONE" database="DBCCCWCC" driver="com.ibm.db2.jcc.DB2Driver" uri="jdbc:db2://cwcc.compuware.com:546/${database}" environmenttype="BATCH" />
+      <ExtensionData>
+        <Parameter key="date">
+          <Value>2019/12/31</Value>
+        </Parameter>
+        <Parameter key="fa_output">
+          <Value>HDDRXM0.TRAIN.LBP.CWXTDATA</Value>
+        </Parameter>
+        <Parameter key="test_input">
+          <Value>HDDRXM0.TRAIN.LBP.CWXTDATA</Value>
+        </Parameter>
+        <Parameter key="fa_master">
+          <Value>HDDRXM0.TRAIN.LBP.CWXTDATA.MASTER</Value>
+        </Parameter>
+        <Parameter key="test_expected">
+          <Value>HDDRXM0.TRAIN.LBP.CWXTRPT.EXPECT.XG</Value>
+        </Parameter>
+        <Parameter key="userid">
+          <Value>HDDRXM0</Value>
+        </Parameter>
+        <Parameter key="test_output">
+          <Value>HDDRXM0.TRAIN.LBP.CWXTRPT</Value>
+        </Parameter>
+      </ExtensionData>
+      <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" caseInsensitiveCompare="false" path="Combined.scenario">
+        <Test>
+          <SubScript filePath="FileAidCopy.scenario" />
+          <SubScript filePath="XchangeSet.scenario" />
+          <Job name="Job" haltExecution="false" jobLocation="JOBDEFINITION" returnCodeVerify="value &lt; 8">
+            <Content><![CDATA[//${userid}T JOB ('EUDD,INTL'),'NUESSE',NOTIFY=&SYSUID, 
+//             MSGLEVEL=(1,1),MSGCLASS=X,CLASS=A,REGION=6M 
+/*JOBPARM S=* 
+//* 
+//*   EXECUTE CWXTCOB IN BATCH 
+//* 
+//STEP1  EXEC PGM=CWXTCOB,PARM=00003 
+//STEPLIB DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE 
+//XPSL0004 DD DISP=SHR,DSN=HDDRXM0.DEMO.CWCC.LOAD.PDSE.SSD 
+//EMPFILE  DD  DISP=SHR,DSN=${test_input} 
+//RPTFILE  DD  DISP=SHR,DSN=${test_output} 
+//SYSOUT   DD  SYSOUT=*]]></Content>
+          </Job>
+          <SubScript filePath="FileAidCompare.scenario" />
+          <SubScript filePath="XchangeDelete.scenario" />
+        </Test>
+      </XaUnit>
+      <ExternalResources>
+        <Resource path="FileAidCopy.scenario">
+          <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" componentNameUnderTest="cwxtcob" caseInsensitiveCompare="false">
+            <Description>Program reads a file of records for employees containing, times worked, revenues achieved. Based on some rules creates a weekly report. At month end, and additional section gets generated in the report&#xD;
+&#xD;
+Execute program on a "normal" day&#xD;
+- Prepare mainframe input dataset EMPFILE from local data&#xD;
+- Execute CWXTCOB&#xD;
+- Read output file RPTFILE&#xD;
+- Verify for each detail record, that total wages equal sum of wages, overtime and commision&#xD;
+- Compare actual RPTFILE against expected RPTFILE&#xD;
+&#xD;
+Not working yet:&#xD;
+Store expected RPFILE data locally and restore to mainframe</Description>
+            <Test>
+              <Job name="Prepare Input Dataset" haltExecution="false" jobLocation="JOBDEFINITION">
+                <Content><![CDATA[//${userid}F JOB (''),'TTT FA COPY',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//FASTEP   EXEC PGM=FILEAID,REGION=08M
+//STEPLIB  DD DISP=SHR,DSN=SYS2.CW.VJ.#CWCC.CXVJLOAD
+//         DD DISP=SHR,DSN=SYS2.CW.&CWGAVJ..SXVJLOAD           
+//SYSPRINT DD  SYSOUT=*                                      
+//SYSLIST  DD  SYSOUT=*                                      
+//DD01     DD  DSN=${fa_master},   
+//             DISP=SHR                                      
+//DD01O    DD  DSN=${fa_output},              
+//             DISP=OLD                                      
+//SYSIN    DD  *                                             
+$$DD01 COPY PADCHAR=X'00'                                    
+/*                                                           
+//]]></Content>
+              </Job>
+            </Test>
+            <MetaData>
+              <MDataDefinition name="empfile_hourly">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-hourly-employee-data native="05 WA-HOURLY-EMPLOYEE-DATA.">
+                    <wa-emp-hours type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HOURS PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-rate type="NumericPacked" length="3" bytes="3" native="10 WA-EMP-RATE PIC 9(3)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="8" bytes="8" native="10 FILLER PIC X(8)." />
+                  </wa-hourly-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_sales">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-sales-employee-data native="05 WA-SALES-EMPLOYEE-DATA REDEFINES WA-HOURLY-EMPLOYEE-DATA." redefines="wa-hourly-employee-data">
+                    <wa-sales-salary type="NumericPacked" length="5" bytes="4" native="10 WA-SALES-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <wa-sales-amount type="NumericDisplay" length="5" bytes="7" native="10 WA-SALES-AMOUNT PIC 9(5)V99." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="2" bytes="2" native="10 FILLER PIC X(2)." />
+                  </wa-sales-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_mgmt">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-mgmt-employee-data native="05 WA-MGMT-EMPLOYEE-DATA REDEFINES WA-SALES-EMPLOYEE-DATA." redefines="wa-sales-employee-data">
+                    <wa-mgmt-salary type="NumericPacked" length="5" bytes="4" native="10 WA-MGMT-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="9" bytes="9" native="10 FILLER PIC X(9)." />
+                  </wa-mgmt-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="rptunformatted">
+                <rpt-unformatted native="01 RPT-UNFORMATTED.">
+                  <filler1 type="Character" length="80" bytes="80" native="05 FILLER PIC X(80) VALUE SPACES." />
+                </rpt-unformatted>
+              </MDataDefinition>
+              <MDataDefinition name="rptEmpDet">
+                <employee-dtl native="01 EMPLOYEE-DTL.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-name type="Character" length="15" bytes="15" native="05 EMP-DTL-NAME PIC X(15)." />
+                  <filler2 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-region type="Character" length="5" bytes="5" native="05 EMP-DTL-REGION PIC X(5)." />
+                  <filler3 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-type type="Character" length="1" bytes="1" native="05 EMP-DTL-TYPE PIC X." />
+                  <filler4 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-hire-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash1 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH1 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash2 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH2 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-yrs-of-service type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-YRS-OF-SERVICE PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler6 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-wages type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-WAGES PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler7 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-ot type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-OT PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler8 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-comm type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-COMM PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler9 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-total type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-TOTAL PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-dtl>
+              </MDataDefinition>
+              <MDataDefinition name="rptHdr">
+                <employee-hdr1 native="01 EMPLOYEE-HDR1.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <filler2 type="Character" length="10" bytes="10" native="05 FILLER PIC X(10) VALUE 'RUN DATE  '." />
+                  <emp-run-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-MM PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler3 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-DD PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler4 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-YY PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="7" bytes="7" native="05 FILLER PIC X(7) VALUE SPACES." />
+                  <filler6 type="Character" length="28" bytes="28" native="05 FILLER PIC X(28) VALUE 'EMPLOYEE COMPENSATION REPORT'." />
+                  <filler7 type="Character" length="18" bytes="18" native="05 FILLER PIC X(18) VALUE SPACES." />
+                  <filler8 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5) VALUE 'PAGE '." />
+                  <emp-page type="NumericDisplay" length="3" bytes="3" native="05 EMP-PAGE PIC ZZ9." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-hdr1>
+              </MDataDefinition>
+            </MetaData>
+          </XaUnit>
+        </Resource>
+        <Resource path="XchangeSet.scenario">
+          <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" componentNameUnderTest="cwxtcob" caseInsensitiveCompare="false">
+            <Description>Program reads a file of records for employees containing, times worked, revenues achieved. Based on some rules creates a weekly report. At month end, and additional section gets generated in the report&#xD;
+&#xD;
+Execute program on a "normal" day&#xD;
+- Prepare mainframe input dataset EMPFILE from local data&#xD;
+- Execute CWXTCOB&#xD;
+- Read output file RPTFILE&#xD;
+- Verify for each detail record, that total wages equal sum of wages, overtime and commision&#xD;
+- Compare actual RPTFILE against expected RPTFILE&#xD;
+&#xD;
+Not working yet:&#xD;
+Store expected RPFILE data locally and restore to mainframe</Description>
+            <Test>
+              <Job name="Set Date" haltExecution="false" jobLocation="JOBDEFINITION">
+                <Content><![CDATA[//${userid}G JOB (''),'TTT XG SET',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//XGSETREQ EXEC PGM=XGSETREQ,REGION=08M
+//STEPLIB  DD   DSN=SYS2.CW.&CWGAXG..SLXGLOAD,DISP=SHR
+//SYSPRINT DD  SYSOUT=*                                      
+//XGOUTBDT DD  SYSOUT=*                                      
+//XGOUTBOF DD  SYSOUT=*                                      
+//XGOUTCDT DD  SYSOUT=*                                      
+//XGOUTCOF DD  SYSOUT=*                                      
+//XGOUTJDT DD  SYSOUT=*                                      
+//XGOUTJOF DD  SYSOUT=*                                      
+//XGOUTDDF DD  SYSOUT=*                                      
+//XGOUTCPD DD  SYSOUT=*                                      
+//XGOUTCPO DD  SYSOUT=* 
+//XGOUTEXE DD  SYSOUT=* 
+//XGINPREQ DD *
+ SSID=MXG1
+ TYPE=BATCH
+ FORMAT=DATETIME
+ H ${userid}T CWXTCOB  *        *        N ${date}
+//*]]></Content>
+              </Job>
+            </Test>
+            <MetaData>
+              <MDataDefinition name="empfile_hourly">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-hourly-employee-data native="05 WA-HOURLY-EMPLOYEE-DATA.">
+                    <wa-emp-hours type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HOURS PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-rate type="NumericPacked" length="3" bytes="3" native="10 WA-EMP-RATE PIC 9(3)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="8" bytes="8" native="10 FILLER PIC X(8)." />
+                  </wa-hourly-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_sales">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-sales-employee-data native="05 WA-SALES-EMPLOYEE-DATA REDEFINES WA-HOURLY-EMPLOYEE-DATA." redefines="wa-hourly-employee-data">
+                    <wa-sales-salary type="NumericPacked" length="5" bytes="4" native="10 WA-SALES-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <wa-sales-amount type="NumericDisplay" length="5" bytes="7" native="10 WA-SALES-AMOUNT PIC 9(5)V99." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="2" bytes="2" native="10 FILLER PIC X(2)." />
+                  </wa-sales-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_mgmt">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-mgmt-employee-data native="05 WA-MGMT-EMPLOYEE-DATA REDEFINES WA-SALES-EMPLOYEE-DATA." redefines="wa-sales-employee-data">
+                    <wa-mgmt-salary type="NumericPacked" length="5" bytes="4" native="10 WA-MGMT-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="9" bytes="9" native="10 FILLER PIC X(9)." />
+                  </wa-mgmt-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="rptunformatted">
+                <rpt-unformatted native="01 RPT-UNFORMATTED.">
+                  <filler1 type="Character" length="80" bytes="80" native="05 FILLER PIC X(80) VALUE SPACES." />
+                </rpt-unformatted>
+              </MDataDefinition>
+              <MDataDefinition name="rptEmpDet">
+                <employee-dtl native="01 EMPLOYEE-DTL.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-name type="Character" length="15" bytes="15" native="05 EMP-DTL-NAME PIC X(15)." />
+                  <filler2 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-region type="Character" length="5" bytes="5" native="05 EMP-DTL-REGION PIC X(5)." />
+                  <filler3 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-type type="Character" length="1" bytes="1" native="05 EMP-DTL-TYPE PIC X." />
+                  <filler4 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-hire-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash1 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH1 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash2 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH2 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-yrs-of-service type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-YRS-OF-SERVICE PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler6 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-wages type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-WAGES PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler7 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-ot type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-OT PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler8 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-comm type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-COMM PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler9 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-total type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-TOTAL PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-dtl>
+              </MDataDefinition>
+              <MDataDefinition name="rptHdr">
+                <employee-hdr1 native="01 EMPLOYEE-HDR1.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <filler2 type="Character" length="10" bytes="10" native="05 FILLER PIC X(10) VALUE 'RUN DATE  '." />
+                  <emp-run-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-MM PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler3 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-DD PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler4 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-YY PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="7" bytes="7" native="05 FILLER PIC X(7) VALUE SPACES." />
+                  <filler6 type="Character" length="28" bytes="28" native="05 FILLER PIC X(28) VALUE 'EMPLOYEE COMPENSATION REPORT'." />
+                  <filler7 type="Character" length="18" bytes="18" native="05 FILLER PIC X(18) VALUE SPACES." />
+                  <filler8 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5) VALUE 'PAGE '." />
+                  <emp-page type="NumericDisplay" length="3" bytes="3" native="05 EMP-PAGE PIC ZZ9." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-hdr1>
+              </MDataDefinition>
+            </MetaData>
+          </XaUnit>
+        </Resource>
+        <Resource path="FileAidCompare.scenario">
+          <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" componentNameUnderTest="cwxtcob" caseInsensitiveCompare="false">
+            <Description>Program reads a file of records for employees containing, times worked, revenues achieved. Based on some rules creates a weekly report. At month end, and additional section gets generated in the report&#xD;
+&#xD;
+Execute program on a "normal" day&#xD;
+- Prepare mainframe input dataset EMPFILE from local data&#xD;
+- Execute CWXTCOB&#xD;
+- Read output file RPTFILE&#xD;
+- Verify for each detail record, that total wages equal sum of wages, overtime and commision&#xD;
+- Compare actual RPTFILE against expected RPTFILE&#xD;
+&#xD;
+Not working yet:&#xD;
+Store expected RPFILE data locally and restore to mainframe</Description>
+            <Test>
+              <FileAIDCompare label="Compare" checkChanged="true" checkInserted="true" checkDeleted="true">
+                <JCL><![CDATA[//${userid}F JOB (''),'TTT FA COMP',NOTIFY=&SYSUID,CLASS=A,
+// REGION=0M,MSGCLASS=X
+/*JOBPARM S=*
+//FASTEP   EXEC PGM=FILEAID,REGION=08M
+//STEPLIB  DD DISP=SHR,DSN=SYS2.CW.VJR17Y.CXVJLOAD
+//         DD DISP=SHR,DSN=SYS2.CW.VJR17Y.SXVJLOAD
+//SYSPRINT DD  SYSOUT=*
+//SYSLIST  DD  SYSOUT=*
+//DD01     DD  DSN=${test_expected},
+//             DISP=SHR
+//DD01C    DD  DSN=${test_output},
+//             DISP=SHR
+//DD01CP   DD  DSN=SALESSUP.GITDEMO1.FA.COMPCRIT(CWXTCOB),
+//             DISP=SHR                              
+//DD01RL   DD  DSN=SALESSUP.GITDEMO1.FA.LAYOUTS,
+//             DISP=SHR
+//DD01XR   DD  DSN=SALESSUP.GITDEMO1.FA.XREF(RPTFILE),
+//             DISP=SHR
+//SYSIN    DD  *
+$$DD01 COMPARE
+/*]]></JCL>
+              </FileAIDCompare>
+            </Test>
+            <MetaData>
+              <MDataDefinition name="empfile_hourly">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-hourly-employee-data native="05 WA-HOURLY-EMPLOYEE-DATA.">
+                    <wa-emp-hours type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HOURS PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-rate type="NumericPacked" length="3" bytes="3" native="10 WA-EMP-RATE PIC 9(3)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="8" bytes="8" native="10 FILLER PIC X(8)." />
+                  </wa-hourly-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_sales">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-sales-employee-data native="05 WA-SALES-EMPLOYEE-DATA REDEFINES WA-HOURLY-EMPLOYEE-DATA." redefines="wa-hourly-employee-data">
+                    <wa-sales-salary type="NumericPacked" length="5" bytes="4" native="10 WA-SALES-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <wa-sales-amount type="NumericDisplay" length="5" bytes="7" native="10 WA-SALES-AMOUNT PIC 9(5)V99." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="2" bytes="2" native="10 FILLER PIC X(2)." />
+                  </wa-sales-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_mgmt">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-mgmt-employee-data native="05 WA-MGMT-EMPLOYEE-DATA REDEFINES WA-SALES-EMPLOYEE-DATA." redefines="wa-sales-employee-data">
+                    <wa-mgmt-salary type="NumericPacked" length="5" bytes="4" native="10 WA-MGMT-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="9" bytes="9" native="10 FILLER PIC X(9)." />
+                  </wa-mgmt-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="rptunformatted">
+                <rpt-unformatted native="01 RPT-UNFORMATTED.">
+                  <filler1 type="Character" length="80" bytes="80" native="05 FILLER PIC X(80) VALUE SPACES." />
+                </rpt-unformatted>
+              </MDataDefinition>
+              <MDataDefinition name="rptEmpDet">
+                <employee-dtl native="01 EMPLOYEE-DTL.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-name type="Character" length="15" bytes="15" native="05 EMP-DTL-NAME PIC X(15)." />
+                  <filler2 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-region type="Character" length="5" bytes="5" native="05 EMP-DTL-REGION PIC X(5)." />
+                  <filler3 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-type type="Character" length="1" bytes="1" native="05 EMP-DTL-TYPE PIC X." />
+                  <filler4 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-hire-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash1 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH1 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash2 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH2 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-yrs-of-service type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-YRS-OF-SERVICE PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler6 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-wages type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-WAGES PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler7 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-ot type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-OT PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler8 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-comm type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-COMM PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler9 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-total type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-TOTAL PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-dtl>
+              </MDataDefinition>
+              <MDataDefinition name="rptHdr">
+                <employee-hdr1 native="01 EMPLOYEE-HDR1.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <filler2 type="Character" length="10" bytes="10" native="05 FILLER PIC X(10) VALUE 'RUN DATE  '." />
+                  <emp-run-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-MM PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler3 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-DD PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler4 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-YY PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="7" bytes="7" native="05 FILLER PIC X(7) VALUE SPACES." />
+                  <filler6 type="Character" length="28" bytes="28" native="05 FILLER PIC X(28) VALUE 'EMPLOYEE COMPENSATION REPORT'." />
+                  <filler7 type="Character" length="18" bytes="18" native="05 FILLER PIC X(18) VALUE SPACES." />
+                  <filler8 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5) VALUE 'PAGE '." />
+                  <emp-page type="NumericDisplay" length="3" bytes="3" native="05 EMP-PAGE PIC ZZ9." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-hdr1>
+              </MDataDefinition>
+            </MetaData>
+          </XaUnit>
+        </Resource>
+        <Resource path="XchangeDelete.scenario">
+          <XaUnit xmlns:data="http://www.xact.dk/xatester/data/v/1" componentNameUnderTest="cwxtcob" caseInsensitiveCompare="false">
+            <Description>Program reads a file of records for employees containing, times worked, revenues achieved. Based on some rules creates a weekly report. At month end, and additional section gets generated in the report&#xD;
+&#xD;
+Execute program on a "normal" day&#xD;
+- Prepare mainframe input dataset EMPFILE from local data&#xD;
+- Execute CWXTCOB&#xD;
+- Read output file RPTFILE&#xD;
+- Verify for each detail record, that total wages equal sum of wages, overtime and commision&#xD;
+- Compare actual RPTFILE against expected RPTFILE&#xD;
+&#xD;
+Not working yet:&#xD;
+Store expected RPFILE data locally and restore to mainframe</Description>
+            <Test>
+              <Job name="Remove Date" haltExecution="false" jobLocation="JOBDEFINITION">
+                <Content><![CDATA[//${userid}G JOB (''),'TTT XG DEL',NOTIFY=&SYSUID,CLASS=A,        
+// REGION=0M,MSGCLASS=X                                                        
+/*JOBPARM S=*                                                                  
+//XGSETREQ EXEC PGM=XGSETREQ,REGION=08M                                         
+//STEPLIB  DD   DSN=SYS2.CW.&CWGAXG..SLXGLOAD,DISP=SHR                          
+//SYSPRINT DD  SYSOUT=*                                                         
+//XGOUTBDT DD  SYSOUT=*                                                        
+//XGOUTBOF DD  SYSOUT=*                                                        
+//XGOUTCDT DD  SYSOUT=*                                                        
+//XGOUTCOF DD  SYSOUT=*                                                        
+//XGOUTJDT DD  SYSOUT=*                                                        
+//XGOUTJOF DD  SYSOUT=*                                                        
+//XGOUTDDF DD  SYSOUT=*                                                        
+//XGOUTCPD DD  SYSOUT=*                                                        
+//XGOUTCPO DD  SYSOUT=* 
+//XGOUTEXE DD  SYSOUT=* 
+//XGINPREQ DD *                                                                
+ SSID=MXG1                                                                     
+ TYPE=BATCH                                                                    
+ FORMAT=DATETIME                                                               
+ D ${userid}T CWXTCOB  *        *        N ${date}                            
+//*]]></Content>
+              </Job>
+            </Test>
+            <MetaData>
+              <MDataDefinition name="empfile_hourly">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-hourly-employee-data native="05 WA-HOURLY-EMPLOYEE-DATA.">
+                    <wa-emp-hours type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HOURS PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-rate type="NumericPacked" length="3" bytes="3" native="10 WA-EMP-RATE PIC 9(3)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="8" bytes="8" native="10 FILLER PIC X(8)." />
+                  </wa-hourly-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_sales">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-sales-employee-data native="05 WA-SALES-EMPLOYEE-DATA REDEFINES WA-HOURLY-EMPLOYEE-DATA." redefines="wa-hourly-employee-data">
+                    <wa-sales-salary type="NumericPacked" length="5" bytes="4" native="10 WA-SALES-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <wa-sales-amount type="NumericDisplay" length="5" bytes="7" native="10 WA-SALES-AMOUNT PIC 9(5)V99." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="2" bytes="2" native="10 FILLER PIC X(2)." />
+                  </wa-sales-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="empfile_mgmt">
+                <employee-work-area native="01 EMPLOYEE-WORK-AREA.">
+                  <wa-emp-num type="NumericDisplay" length="5" bytes="5" native="05 WA-EMP-NUM PIC 9(5)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-type type="Character" length="1" bytes="1" native="05 WA-EMP-TYPE PIC X." />
+                  <wa-emp-region type="NumericDisplay" length="1" bytes="1" native="05 WA-EMP-REGION PIC 9." signed="false" decimals="0" signsep="false" signpos="" />
+                  <wa-emp-name type="Character" length="15" bytes="15" native="05 WA-EMP-NAME PIC X(15)." />
+                  <wa-emp-address native="05 WA-EMP-ADDRESS.">
+                    <wa-emp-street type="Character" length="15" bytes="15" native="10 WA-EMP-STREET PIC X(15)." />
+                    <wa-emp-city type="Character" length="8" bytes="8" native="10 WA-EMP-CITY PIC X(8)." />
+                    <wa-emp-state type="Character" length="2" bytes="2" native="10 WA-EMP-STATE PIC XX." />
+                    <wa-emp-zip type="Character" length="9" bytes="9" native="10 WA-EMP-ZIP PIC X(9)." />
+                  </wa-emp-address>
+                  <wa-mgmt-employee-data native="05 WA-MGMT-EMPLOYEE-DATA REDEFINES WA-SALES-EMPLOYEE-DATA." redefines="wa-sales-employee-data">
+                    <wa-mgmt-salary type="NumericPacked" length="5" bytes="4" native="10 WA-MGMT-SALARY PIC 9(5)V99 COMP-3." signed="false" decimals="2" signsep="false" signpos="" />
+                    <filler1 type="Character" length="9" bytes="9" native="10 FILLER PIC X(9)." />
+                  </wa-mgmt-employee-data>
+                  <wa-emp-hire-date native="05 WA-EMP-HIRE-DATE.">
+                    <wa-emp-hire-yy type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-mm type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                    <wa-emp-hire-dd type="NumericDisplay" length="2" bytes="2" native="10 WA-EMP-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  </wa-emp-hire-date>
+                  <filler1 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5)." />
+                </employee-work-area>
+              </MDataDefinition>
+              <MDataDefinition name="rptunformatted">
+                <rpt-unformatted native="01 RPT-UNFORMATTED.">
+                  <filler1 type="Character" length="80" bytes="80" native="05 FILLER PIC X(80) VALUE SPACES." />
+                </rpt-unformatted>
+              </MDataDefinition>
+              <MDataDefinition name="rptEmpDet">
+                <employee-dtl native="01 EMPLOYEE-DTL.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-name type="Character" length="15" bytes="15" native="05 EMP-DTL-NAME PIC X(15)." />
+                  <filler2 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-region type="Character" length="5" bytes="5" native="05 EMP-DTL-REGION PIC X(5)." />
+                  <filler3 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-type type="Character" length="1" bytes="1" native="05 EMP-DTL-TYPE PIC X." />
+                  <filler4 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-hire-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-MM PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash1 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH1 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-DD PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <emp-dtl-slash2 type="Character" length="1" bytes="1" native="05 EMP-DTL-SLASH2 PIC X VALUE SPACES." />
+                  <emp-dtl-hire-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-HIRE-YY PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="3" bytes="3" native="05 FILLER PIC X(3) VALUE SPACES." />
+                  <emp-dtl-yrs-of-service type="NumericDisplay" length="2" bytes="2" native="05 EMP-DTL-YRS-OF-SERVICE PIC 9(2)." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler6 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-wages type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-WAGES PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler7 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-ot type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-OT PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler8 type="Character" length="2" bytes="2" native="05 FILLER PIC X(2) VALUE SPACES." />
+                  <emp-dtl-comm type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-COMM PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler9 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <emp-dtl-total type="NumericEdited" length="8" bytes="8" native="05 EMP-DTL-TOTAL PIC ZZZZ9.99." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-dtl>
+              </MDataDefinition>
+              <MDataDefinition name="rptHdr">
+                <employee-hdr1 native="01 EMPLOYEE-HDR1.">
+                  <filler1 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE SPACES." />
+                  <filler2 type="Character" length="10" bytes="10" native="05 FILLER PIC X(10) VALUE 'RUN DATE  '." />
+                  <emp-run-mm type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-MM PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler3 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-dd type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-DD PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler4 type="Character" length="1" bytes="1" native="05 FILLER PIC X VALUE '/'." />
+                  <emp-run-yy type="NumericDisplay" length="2" bytes="2" native="05 EMP-RUN-YY PIC 99." signed="false" decimals="0" signsep="false" signpos="" />
+                  <filler5 type="Character" length="7" bytes="7" native="05 FILLER PIC X(7) VALUE SPACES." />
+                  <filler6 type="Character" length="28" bytes="28" native="05 FILLER PIC X(28) VALUE 'EMPLOYEE COMPENSATION REPORT'." />
+                  <filler7 type="Character" length="18" bytes="18" native="05 FILLER PIC X(18) VALUE SPACES." />
+                  <filler8 type="Character" length="5" bytes="5" native="05 FILLER PIC X(5) VALUE 'PAGE '." />
+                  <emp-page type="NumericDisplay" length="3" bytes="3" native="05 EMP-PAGE PIC ZZ9." signed="false" decimals="0" signsep="false" signpos="" />
+                </employee-hdr1>
+              </MDataDefinition>
+            </MetaData>
+          </XaUnit>
+        </Resource>
+      </ExternalResources>
+    </ExecutionContext>
+  </Context>
+  <Started>20211006-12-04-13</Started>
+  <Ended>20211006-12-04-17</Ended>
+</XaUnitResult>

@@ -1,0 +1,1 @@
+       01  BLANK-LINE             PIC X(80).
