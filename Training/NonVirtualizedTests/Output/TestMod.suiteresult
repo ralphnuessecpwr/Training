@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaSuiteResult resultType="FAILURE" containsSimulation="false">
+  <Message>Total 2 tests failed out of 3 tests.</Message>
+  <Started>20211129-08-54-14</Started>
+  <Ended>20211129-08-54-14</Ended>
+  <XaUnitResults>
+    <XaUnitResult path="../Scenarios/Modular/Variables.context" xaUnitPath="../Scenarios/Modular/Variables.scenario" resultPath="../Scenarios/Modular/Output/Variables.result" containsSimulation="false" resultType="SUCCESS" duration="6">
+      <CC />
+      <Message />
+      <DetailedMessage />
+    </XaUnitResult>
+    <XaUnitResult path="../Scenarios/Modular/FileAidCompare.context" xaUnitPath="../Scenarios/Modular/FileAidCompare.scenario" resultPath="../Scenarios/Modular/Output/FileAidCompare.result" containsSimulation="false" resultType="FAILURE" duration="7" componentUnderTest="cwxtcob">
+      <CC />
+      <Message>An error occurred and the execution has been stopped. It was not possible to execute the Job. it contains a variable that cannot be substituted. The variable id: userid is refered to from variable substitution but it is not present in the execution. Please correct the test scenario to have a variable of that id or change the substitution</Message>
+      <DetailedMessage>No log information</DetailedMessage>
+    </XaUnitResult>
+    <XaUnitResult path="../Scenarios/Modular/FileAidCopy.context" xaUnitPath="../Scenarios/Modular/FileAidCopy.scenario" resultPath="../Scenarios/Modular/Output/FileAidCopy.result" containsSimulation="false" resultType="FAILURE" duration="4" componentUnderTest="cwxtcob">
+      <CC />
+      <Message>An error occurred and the execution has been stopped. It was not possible to execute the Job. it contains a variable that cannot be substituted. The variable id: userid is refered to from variable substitution but it is not present in the execution. Please correct the test scenario to have a variable of that id or change the substitution</Message>
+      <DetailedMessage>No log information</DetailedMessage>
+    </XaUnitResult>
+  </XaUnitResults>
+</XaSuiteResult>

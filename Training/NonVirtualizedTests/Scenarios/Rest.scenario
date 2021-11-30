@@ -21,7 +21,7 @@
       </HttpHeaders>
       <ResponseVerify><![CDATA[{"message":"Assignment with id ${assignmentIdGood} not found."}]]></ResponseVerify>
     </RestService>
-    <RestService id="Rest4" label="Demo4 - Should find assignment and fail in response data" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdGood}" httpType="GET" statusCodeVerify="value&gt;=200 &amp;&amp; value&lt;400">
+    <RestService id="Rest4" label="Demo4 - Should find assignment and fail in response data" endpointUri="http://cwcc.compuware.com:2020/ispw/ispw/assignments/${assignmentIdGood}/tasks" httpType="GET" statusCodeVerify="value&gt;=200 &amp;&amp; value&lt;400">
       <HttpHeaders>
         <Header key="authorization" value="665fc9fb-39de-428a-8a67-a3619752873d" />
       </HttpHeaders>

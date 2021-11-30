@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XaSuite xmlns="http://www.xact.dk/xatester/v/1" name="TestMod" haltAtFailure="false">
+  <Description />
+  <XaUnits>
+    <Path>../Scenarios/Modular/Variables.scenario</Path>
+    <Path>../Scenarios/Modular/FileAidCompare.scenario</Path>
+    <Path>../Scenarios/Modular/FileAidCopy.scenario</Path>
+  </XaUnits>
+</XaSuite>

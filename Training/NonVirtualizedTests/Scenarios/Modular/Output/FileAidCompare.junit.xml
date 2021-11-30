@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?totaltestVersion 20.8.2.v20211026-0506_133?>
+<!--Topaz for Total Test 20.8.2.v20211026-0506_133 Nov 29, 2021 8:54:14 AM-->
+<testsuites>
+  <testsuite name="FileAidCompare" errors="1" tests="0" failures="0">
+    <testcase classname="FileAidCompare" name="FileAidCompare">
+      <error message="An error occurred and the execution has been stopped. It was not possible to execute the Job. it contains a variable that cannot be substituted. The variable id: userid is refered to from variable substitution but it is not present in the execution. Please correct the test scenario to have a variable of that id or change the substitution">An error occurred and the execution has been stopped. It was not possible to execute the Job. it contains a variable that cannot be substituted. The variable id: userid is refered to from variable substitution but it is not present in the execution. Please correct the test scenario to have a variable of that id or change the substitution</error>
+    </testcase>
+  </testsuite>
+</testsuites>

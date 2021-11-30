@@ -1,0 +1,29 @@
+08:54:14.047 INFO      Engine           Test Scenario execution started
+08:54:14.048 INFO      Engine           Using context settings:
+  Engine Version                : 20.8.2.v20211026-0506_133
+  Environment id                : 5b508b8a787be73b59238d38
+  Environment type              : Batch
+  Operating system              : ZOS
+  zOS agent version             : NEWEST
+  Server address                : cwcc.nasa.cpwr.corp
+  Server port                   : 16196
+  Job execution timeout seconds : 300
+  Job info interval seconds     : 3
+  Socket read timeout           : 30
+  Encoding                      : ISO8859-1
+  Codepage                      : IBM-1047
+  Host user Id                  : HDDRXM0
+  Use Repository Server         : true
+08:54:14.049 INFO      Engine           Setting variables from context and context data extensions
+08:54:14.050 INFO      Engine             id: environmentId      value: 5b508b8a787be73b59238d38
+08:54:14.050 INFO      Engine             id: environmentType    value: BATCH
+08:54:14.051 INFO      Engine             id: userId             value: HDDRXM0
+08:54:14.052 INFO      Engine             id: accountingInfo     value: 
+08:54:14.054 INFO      FileAIDCompare   Executing File-AID Compare element with assertions:
+08:54:14.054 INFO      FileAIDCompare     Assert on changed records : true
+08:54:14.055 INFO      FileAIDCompare     Assert on inserted records: true
+08:54:14.055 INFO      FileAIDCompare     Assert on deleted records : true
+08:54:14.056 INFO      FileAIDCompare   Variable substitution found in Job JCL, now substituted
+08:54:14.056 ERROR     Engine           It was not possible to execute the Job. it contains a variable that cannot be substituted. The variable id: userid is refered to from variable substitution but it is not present in the execution. Please correct the test scenario to have a variable of that id or change the substitution
+08:54:14.057 ERROR     Engine           An error occurred. Now stopping the execution.
+08:54:14.058 INFO      Engine           Test Scenario execution ended
